@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://37bvccuefe5c"]
+[gd_scene load_steps=6 format=3 uid="uid://37bvccuefe5c"]
 
 [ext_resource type="Shader" uid="uid://bjrh8p5sgsaue" path="res://arts/shaders/SkyPanorama.tres" id="1_yflli"]
-[ext_resource type="Texture2D" uid="uid://dlcrq5j0tcil2" path="res://arts/textures/Sky_LowPoly_01_Day_a.png" id="2_nkd8x"]
-[ext_resource type="PackedScene" uid="uid://b826kxnc2usxu" path="res://arts/meshes/Arrow_GameJam.blend" id="3_fjwq4"]
+[ext_resource type="Texture2D" uid="uid://dlcrq5j0tcil2" path="res://arts/textures/T_SkyPanorama_01.png" id="2_nkd8x"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_urjeg"]
 shader = ExtResource("1_yflli")
@@ -14,7 +13,7 @@ sky_material = SubResource("ShaderMaterial_urjeg")
 [sub_resource type="Environment" id="Environment_kfh1s"]
 background_mode = 2
 sky = SubResource("Sky_yre4i")
-ambient_light_source = 3
+ambient_light_source = 1
 glow_enabled = true
 glow_levels/6 = 0.13
 glow_levels/7 = 0.25
@@ -24,7 +23,8 @@ glow_hdr_threshold = 0.5
 glow_hdr_scale = 1.5
 fog_enabled = true
 fog_light_color = Color(0.384314, 0.607843, 0.803922, 1)
-fog_density = 0.05
+fog_light_energy = 0.5
+fog_density = 0.025
 fog_sky_affect = 0.6
 volumetric_fog_density = 0.0225
 volumetric_fog_albedo = Color(0.341176, 0.721569, 0.909804, 1)
@@ -35,6 +35,3 @@ volumetric_fog_gi_inject = 0.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_kfh1s")
-
-[node name="Arrow_GameJam" parent="." instance=ExtResource("3_fjwq4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.65085, 0)
