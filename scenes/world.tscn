@@ -1,50 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://37bvccuefe5c"]
+[gd_scene load_steps=4 format=3 uid="uid://37bvccuefe5c"]
 
-[ext_resource type="Shader" uid="uid://bjrh8p5sgsaue" path="res://arts/shaders/SkyPanorama.tres" id="1_yflli"]
-[ext_resource type="Texture2D" uid="uid://dlcrq5j0tcil2" path="res://arts/textures/T_SkyPanorama_01.png" id="2_nkd8x"]
+[ext_resource type="Script" path="res://scripts/Player.gd" id="1_2muh8"]
 [ext_resource type="PackedScene" uid="uid://dvky5ym53pejp" path="res://scenes/player.tscn" id="3_5ortb"]
-[ext_resource type="PackedScene" uid="uid://bacnktouynem4" path="res://arts/vfx/vfx_Clouds01.tscn" id="4_6bpg2"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_urjeg"]
-shader = ExtResource("1_yflli")
-shader_parameter/source_panorama = ExtResource("2_nkd8x")
-
-[sub_resource type="Sky" id="Sky_yre4i"]
-sky_material = SubResource("ShaderMaterial_urjeg")
-
-[sub_resource type="Environment" id="Environment_kfh1s"]
-background_mode = 2
-sky = SubResource("Sky_yre4i")
-ambient_light_source = 1
-glow_enabled = true
-glow_levels/6 = 0.13
-glow_levels/7 = 0.25
-glow_intensity = 0.1
-glow_blend_mode = 0
-glow_hdr_threshold = 0.5
-glow_hdr_scale = 1.5
-fog_enabled = true
-fog_light_color = Color(0.384314, 0.607843, 0.803922, 1)
-fog_light_energy = 0.5
-fog_density = 0.025
-fog_sky_affect = 0.6
-volumetric_fog_density = 0.0225
-volumetric_fog_albedo = Color(0.341176, 0.721569, 0.909804, 1)
-volumetric_fog_emission = Color(0.631373, 0.631373, 0.631373, 1)
-volumetric_fog_gi_inject = 0.0
+[ext_resource type="PackedScene" uid="uid://bcqmj2ims1lsf" path="res://scenes/environment.tscn" id="3_e4mae"]
 
 [node name="World" type="Node3D"]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_kfh1s")
+script = ExtResource("1_2muh8")
 
 [node name="Player" parent="." instance=ExtResource("3_5ortb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 191.585, 123.484)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 143.568, -30.6677)
 
-[node name="Cloud01" parent="." instance=ExtResource("4_6bpg2")]
-
-[node name="Cloud02" parent="." instance=ExtResource("4_6bpg2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.88952, -10.6869, 154.815)
-
-[node name="Cloud03" parent="." instance=ExtResource("4_6bpg2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.676, 29.0872, 0)
+[node name="Environment" parent="." instance=ExtResource("3_e4mae")]
