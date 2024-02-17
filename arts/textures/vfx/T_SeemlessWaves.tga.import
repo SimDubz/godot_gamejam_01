@@ -2,27 +2,26 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bw80rm4215dbu"
-path.s3tc="res://.godot/imported/Sky_Anime_03_Day_a.png-40123bfaaa5c45c0de2effc4e58f7df2.s3tc.ctex"
+uid="uid://bmjm6a00vschw"
+path="res://.godot/imported/T_SeemlessWaves.tga-fc612d304455c21dd83e6f40d37d7807.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://arts/textures/Sky_Anime_03_Day_a.png"
-dest_files=["res://.godot/imported/Sky_Anime_03_Day_a.png-40123bfaaa5c45c0de2effc4e58f7df2.s3tc.ctex"]
+source_file="res://arts/textures/vfx/T_SeemlessWaves.tga"
+dest_files=["res://.godot/imported/T_SeemlessWaves.tga-fc612d304455c21dd83e6f40d37d7807.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -32,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1
