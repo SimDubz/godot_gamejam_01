@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://crb76rxl0vs71"]
+
+[ext_resource type="Script" path="res://scenes/enemy.gd" id="1_3rs2g"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_s3bvm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nh8m4"]
+size = Vector3(3.46106, 4.21519, 2.93277)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_eas8o"]
+
+[node name="Enemy" type="CharacterBody3D"]
+script = ExtResource("1_3rs2g")
+
+[node name="CharacterModel" type="Node3D" parent="."]
+
+[node name="Body" type="MeshInstance3D" parent="CharacterModel"]
+transform = Transform3D(3.23214, 0, 0, 0, 2.08188, 0, 0, 0, 2.73766, 0, -1.1986, 0)
+mesh = SubResource("BoxMesh_s3bvm")
+
+[node name="Canon" type="MeshInstance3D" parent="CharacterModel"]
+transform = Transform3D(1.14921, 0, 0, 0, 0.860419, 2.66991, 0, -0.981915, 2.33955, 0, 0.228548, 0.325845)
+mesh = SubResource("BoxMesh_s3bvm")
+
+[node name="CanonEdge" type="Marker3D" parent="CharacterModel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.062778, 1.62187, 1.62714)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0337524, -0.772943, 0.119522)
+shape = SubResource("BoxShape3D_nh8m4")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="Range" type="Area3D" parent="."]
+unique_name_in_owner = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Range"]
+transform = Transform3D(150, 0, 0, 0, 150, 0, 0, 0, 150, 0, 0, 0)
+shape = SubResource("BoxShape3D_eas8o")
+
+[connection signal="timeout" from="Timer" to="." method="_on_shoot_timer_timeout"]
+[connection signal="body_entered" from="Range" to="." method="_on_range_body_entered"]
+[connection signal="body_exited" from="Range" to="." method="_on_range_body_exited"]

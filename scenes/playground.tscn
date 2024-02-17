@@ -1,7 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://d3phcrvwpahmd"]
+[gd_scene load_steps=8 format=3 uid="uid://d3phcrvwpahmd"]
 
 [ext_resource type="Texture2D" uid="uid://cmbc41qcke40u" path="res://arts/kloofendal_48d_partly_cloudy_puresky_2k.hdr" id="1_0ynvu"]
+[ext_resource type="PackedScene" uid="uid://crb76rxl0vs71" path="res://scenes/enemy.tscn" id="1_dmrs0"]
 [ext_resource type="PackedScene" uid="uid://dvky5ym53pejp" path="res://scenes/player.tscn" id="2_vm42v"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ai14q"]
+albedo_color = Color(0.0666667, 0.466667, 0, 1)
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_v8602"]
 panorama = ExtResource("1_0ynvu")
@@ -24,6 +28,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -215.743, -290.639)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 85.3115, -0.5, 43.575)
 use_collision = true
 size = Vector3(20, 1, 20)
+material = SubResource("StandardMaterial3D_ai14q")
 
 [node name="stage2" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -34.4549, 0)
@@ -33,21 +38,39 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.3076, -76.8402, -115.726)
 use_collision = true
 size = Vector3(20, 1, 20)
 
+[node name="Enemy" parent="stage2" instance=ExtResource("1_dmrs0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67.6203, -74.4292, -121.706)
+
+[node name="Enemy2" parent="stage2" instance=ExtResource("1_dmrs0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75.5019, -74.4292, -121.706)
+
 [node name="stage3" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.9906, -11.1548, 0)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="stage3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.8046, -116.445, -69.9838)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.9259, -61.8464, -66.7105)
 use_collision = true
 size = Vector3(20, 1, 20)
+
+[node name="Enemy" parent="stage3" instance=ExtResource("1_dmrs0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.7897, -59.1012, -74.1398)
+
+[node name="Enemy2" parent="stage3" instance=ExtResource("1_dmrs0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.2023, -59.101, -74.1245)
 
 [node name="stage4" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.0741, -21.7989, 0)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="stage4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.415, -18.028, -30.314)
 use_collision = true
-size = Vector3(20, 1, 20)
+size = Vector3(18.4214, 1, 20)
+
+[node name="Enemy" parent="stage4" instance=ExtResource("1_dmrs0")]
+transform = Transform3D(0.999289, 0, -0.0377076, 0, 1, 0, 0.0377076, 0, 0.999289, -6.19268, -15.2269, -36.9841)
+
+[node name="Enemy2" parent="stage4" instance=ExtResource("1_dmrs0")]
+transform = Transform3D(0.999999, -0.000859384, 0.000948555, 0.00085999, 0.999999, -0.000640378, -0.000948002, 0.000641191, 0.999999, -14.7822, -15.2619, -36.7231)
 
 [node name="env" type="Node3D" parent="."]
 

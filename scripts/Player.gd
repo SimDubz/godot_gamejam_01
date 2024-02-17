@@ -31,6 +31,7 @@ var boosted_speed = 100 # Adjust as needed for the desired boost effect
 var speed_boost_duration = 2.0 # Duration of the speed boost in seconds
 var speed_boost_timer = 0.0 # Timer to track the speed boost duration
 
+signal plane_position_updated(new_position)
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -59,6 +60,7 @@ func _input(event):
 
 
 func _physics_process(delta: float) -> void:
+	emit_signal("plane_position_updated", global_transform.origin)
 	
 	# Handle gravity reduction timer
 	if gravity_reduction_timer > 0:
@@ -83,7 +85,7 @@ func _physics_process(delta: float) -> void:
 	# Calculate the current speed from the velocity vector
 	current_speed = velocity.length()
 	kmh_speed = units_per_second_to_kmh(current_speed)
-	print("km/h: %s" % str(kmh_speed))
+	#print("km/h: %s" % str(kmh_speed))
 	
 	# Adjust speed based on pitch
 	speed = min(base_speed + sin(pitch) * 5, 50.0)
