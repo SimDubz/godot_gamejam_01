@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://dmup8p3f7vm3j"]
+
+[ext_resource type="Shader" uid="uid://bjrh8p5sgsaue" path="res://arts/shaders/SkyPanorama.tres" id="1_1qw2i"]
+[ext_resource type="Texture2D" uid="uid://dlcrq5j0tcil2" path="res://arts/textures/T_SkyPanorama_01.png" id="2_guexm"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_urjeg"]
+shader = ExtResource("1_1qw2i")
+shader_parameter/source_panorama = ExtResource("2_guexm")
+
+[sub_resource type="Sky" id="Sky_yre4i"]
+sky_material = SubResource("ShaderMaterial_urjeg")
+
+[sub_resource type="Environment" id="Environment_kfh1s"]
+background_mode = 2
+sky = SubResource("Sky_yre4i")
+ambient_light_source = 1
+glow_enabled = true
+glow_levels/6 = 0.13
+glow_levels/7 = 0.25
+glow_intensity = 0.1
+glow_blend_mode = 0
+glow_hdr_threshold = 0.5
+glow_hdr_scale = 1.5
+fog_enabled = true
+fog_light_color = Color(0.384314, 0.607843, 0.803922, 1)
+fog_light_energy = 0.5
+fog_density = 0.025
+fog_sky_affect = 0.6
+volumetric_fog_density = 0.0225
+volumetric_fog_albedo = Color(0.341176, 0.721569, 0.909804, 1)
+volumetric_fog_emission = Color(0.631373, 0.631373, 0.631373, 1)
+volumetric_fog_gi_inject = 0.0
+
+[node name="Sky" type="WorldEnvironment"]
+environment = SubResource("Environment_kfh1s")

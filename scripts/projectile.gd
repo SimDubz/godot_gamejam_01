@@ -12,7 +12,6 @@ func _physics_process(delta: float) -> void:
 	translate(velocity * delta)
 
 func _on_body_entered(body: Node3D) -> void:
-	
 	queue_free()
 
 func set_direction(new_direction: Vector3) -> void:

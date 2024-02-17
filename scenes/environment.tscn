@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bcqmj2ims1lsf"]
+
+[ext_resource type="PackedScene" uid="uid://dmup8p3f7vm3j" path="res://scenes/sky.tscn" id="1_6thxk"]
+
+[node name="Environment" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Sky" parent="." instance=ExtResource("1_6thxk")]
