@@ -7,7 +7,7 @@
 
 [sub_resource type="BoxMesh" id="BoxMesh_fw1s2"]
 
-[node name="Player" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D" groups=["Plane"]]
 motion_mode = 1
 script = ExtResource("1_d8bry")
 
