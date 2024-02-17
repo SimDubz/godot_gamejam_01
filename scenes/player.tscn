@@ -1,11 +1,10 @@
 [gd_scene load_steps=5 format=3 uid="uid://dvky5ym53pejp"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_d8bry"]
+[ext_resource type="PackedScene" uid="uid://bcyokri8rejgf" path="res://assets/barrel_plane.tscn" id="2_44qof"]
 [ext_resource type="Script" path="res://scripts/pivot.gd" id="2_53jvj"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_o16as"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_fw1s2"]
 
 [node name="Player" type="CharacterBody3D" groups=["Plane"]]
 motion_mode = 1
@@ -16,13 +15,8 @@ shape = SubResource("SphereShape3D_o16as")
 
 [node name="CharacterModel" type="Node3D" parent="."]
 
-[node name="Body" type="MeshInstance3D" parent="CharacterModel"]
-transform = Transform3D(0.794712, 0, 0, 0, 0.204363, 0, 0, 0, 1.6276, 0, 0, 0)
-mesh = SubResource("BoxMesh_fw1s2")
-
-[node name="Body2" type="MeshInstance3D" parent="CharacterModel"]
-transform = Transform3D(-0.000314059, -0.000473864, 1.62759, 0.000341173, 0.204363, 0.00377424, -0.794712, 8.79211e-05, -0.000641581, 0, 0, 0)
-mesh = SubResource("BoxMesh_fw1s2")
+[node name="barrel_plane" parent="CharacterModel" instance=ExtResource("2_44qof")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="pivot" type="Node3D" parent="."]
 script = ExtResource("2_53jvj")

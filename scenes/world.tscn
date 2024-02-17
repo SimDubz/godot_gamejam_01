@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://37bvccuefe5c"]
+[gd_scene load_steps=8 format=3 uid="uid://37bvccuefe5c"]
 
 [ext_resource type="Shader" uid="uid://bjrh8p5sgsaue" path="res://arts/shaders/SkyPanorama.tres" id="1_yflli"]
 [ext_resource type="Texture2D" uid="uid://dlcrq5j0tcil2" path="res://arts/textures/T_SkyPanorama_01.png" id="2_nkd8x"]
+[ext_resource type="PackedScene" uid="uid://dvky5ym53pejp" path="res://scenes/player.tscn" id="3_5ortb"]
+[ext_resource type="PackedScene" uid="uid://bacnktouynem4" path="res://arts/vfx/vfx_Clouds01.tscn" id="4_6bpg2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_urjeg"]
 shader = ExtResource("1_yflli")
@@ -35,3 +37,14 @@ volumetric_fog_gi_inject = 0.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_kfh1s")
+
+[node name="Player" parent="." instance=ExtResource("3_5ortb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 191.585, 123.484)
+
+[node name="Cloud01" parent="." instance=ExtResource("4_6bpg2")]
+
+[node name="Cloud02" parent="." instance=ExtResource("4_6bpg2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.88952, -10.6869, 154.815)
+
+[node name="Cloud03" parent="." instance=ExtResource("4_6bpg2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.676, 29.0872, 0)

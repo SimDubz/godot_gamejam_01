@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://crb76rxl0vs71"]
 
-[ext_resource type="Script" path="res://scenes/enemy.gd" id="1_3rs2g"]
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_i3yvh"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_s3bvm"]
 
@@ -10,7 +10,7 @@ size = Vector3(3.46106, 4.21519, 2.93277)
 [sub_resource type="BoxShape3D" id="BoxShape3D_eas8o"]
 
 [node name="Enemy" type="CharacterBody3D"]
-script = ExtResource("1_3rs2g")
+script = ExtResource("1_i3yvh")
 
 [node name="CharacterModel" type="Node3D" parent="."]
 

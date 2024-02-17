@@ -1,0 +1,32 @@
+[gd_scene load_steps=9 format=3 uid="uid://bcyokri8rejgf"]
+
+[ext_resource type="PackedScene" uid="uid://dkv5ujniuk7co" path="res://arts/meshes/barrel_plane.glb" id="1_nbkau"]
+[ext_resource type="Shader" path="res://arts/shaders/shader_base.gdshader" id="2_hrroo"]
+[ext_resource type="Texture2D" uid="uid://e4wv6qbxtiic" path="res://arts/textures/barrel_plane/Body_basecolor_baked.png" id="3_nf5uj"]
+[ext_resource type="Texture2D" uid="uid://k4ascfj38epn" path="res://arts/textures/barrel_plane/Propeller_basecolor_baked.png" id="4_7mev5"]
+[ext_resource type="Texture2D" uid="uid://qpna0oqakday" path="res://arts/textures/barrel_plane/Wings_basecolor_baked.png" id="5_mhe63"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b120k"]
+render_priority = 0
+shader = ExtResource("2_hrroo")
+shader_parameter/albedo_color = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("3_nf5uj")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cuf63"]
+render_priority = 0
+shader = ExtResource("2_hrroo")
+shader_parameter/albedo_color = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("4_7mev5")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u3jgi"]
+render_priority = 0
+shader = ExtResource("2_hrroo")
+shader_parameter/albedo_color = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("5_mhe63")
+
+[node name="barrel_plane" instance=ExtResource("1_nbkau")]
+
+[node name="model" parent="rig/Skeleton3D" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_b120k")
+surface_material_override/1 = SubResource("ShaderMaterial_cuf63")
+surface_material_override/2 = SubResource("ShaderMaterial_u3jgi")
