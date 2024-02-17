@@ -1,0 +1,92 @@
+[gd_scene load_steps=14 format=3 uid="uid://bys06v4yu7qfo"]
+
+[ext_resource type="Texture2D" uid="uid://nm72sbly486g" path="res://arts/textures/vfx/T_SoftCircle_01.PNG" id="1_0id8f"]
+
+[sub_resource type="Curve" id="Curve_ws5tg"]
+_data = [Vector2(0, 0.445122), 0.0, 0.0, 0, 0, Vector2(0.603704, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_b0xds"]
+curve = SubResource("Curve_ws5tg")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_daxam"]
+emission_shape = 1
+emission_sphere_radius = 0.15
+direction = Vector3(0, 0, 1)
+spread = 3.0
+initial_velocity_min = 4.0
+initial_velocity_max = 5.0
+gravity = Vector3(0, 0, 0)
+damping_min = 3.5
+damping_max = 5.0
+scale_curve = SubResource("CurveTexture_b0xds")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ep7fo"]
+render_priority = 1
+transparency = 1
+shading_mode = 0
+disable_fog = true
+vertex_color_use_as_albedo = true
+albedo_color = Color(5, 2, 0.25, 0.5)
+albedo_texture = ExtResource("1_0id8f")
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_g46dv"]
+material = SubResource("StandardMaterial3D_ep7fo")
+
+[sub_resource type="Gradient" id="Gradient_571d7"]
+offsets = PackedFloat32Array(0, 0.421488, 1)
+colors = PackedColorArray(0, 0, 0, 0.196078, 0, 0, 0, 0.784314, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_s7eht"]
+gradient = SubResource("Gradient_571d7")
+
+[sub_resource type="Curve" id="Curve_e4fk1"]
+_data = [Vector2(0, 0.474848), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_5sj8l"]
+curve = SubResource("Curve_e4fk1")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8a0sw"]
+emission_shape = 1
+emission_sphere_radius = 0.3
+direction = Vector3(0, 0, 1)
+spread = 7.5
+initial_velocity_min = 4.0
+initial_velocity_max = 5.0
+gravity = Vector3(0, 0, 0)
+damping_min = 3.0
+damping_max = 4.0
+scale_min = 3.0
+scale_max = 5.0
+scale_curve = SubResource("CurveTexture_5sj8l")
+color_ramp = SubResource("GradientTexture1D_s7eht")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r5ikd"]
+transparency = 1
+shading_mode = 0
+disable_fog = true
+vertex_color_use_as_albedo = true
+albedo_color = Color(0, 0, 0, 1)
+albedo_texture = ExtResource("1_0id8f")
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_yemem"]
+material = SubResource("StandardMaterial3D_r5ikd")
+
+[node name="vfx_Flametrower" type="Node3D"]
+transform = Transform3D(0.98328, 0, 0.182098, -0.0221922, 0.992546, 0.119832, -0.180741, -0.121869, 0.975951, 0, 0, 0)
+
+[node name="FlameAdd" type="GPUParticles3D" parent="."]
+amount = 12
+process_material = SubResource("ParticleProcessMaterial_daxam")
+draw_pass_1 = SubResource("QuadMesh_g46dv")
+
+[node name="FlameAB" type="GPUParticles3D" parent="."]
+amount = 7
+lifetime = 1.2
+process_material = SubResource("ParticleProcessMaterial_8a0sw")
+draw_pass_1 = SubResource("QuadMesh_yemem")
