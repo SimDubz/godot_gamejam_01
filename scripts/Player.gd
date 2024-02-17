@@ -22,6 +22,14 @@ var gravity = 7.8
 var max_pitch_down = deg_to_rad(-45)
 var max_pitch_up = deg_to_rad(30)
 var thermal_lift = false # New variable for thermal updrafts
+var gravity_effect = 1.0 # Normal gravity
+var reduced_gravity_effect = 0.5 # Reduced gravity effect
+var gravity_reduction_duration = 2.0 # Duration of reduced gravity in seconds
+var gravity_reduction_timer = 0.0 # Timer to track gravity reduction
+var normal_speed = 2.0
+var boosted_speed = 100 # Adjust as needed for the desired boost effect
+var speed_boost_duration = 2.0 # Duration of the speed boost in seconds
+var speed_boost_timer = 0.0 # Timer to track the speed boost duration
 
 
 func _ready() -> void:
@@ -31,6 +39,11 @@ func _input(event):
 	if event is InputEventMouseMotion:
 		pitch += deg_to_rad(event.relative.y * mouse_sensitivity)
 		pitch = clamp(pitch, max_pitch_down, max_pitch_up)
+		
+		if event.relative.y > 0:
+			activate_reduced_gravity()
+			speed = boosted_speed
+			speed_boost_timer = speed_boost_duration
 
 	if Input.is_action_pressed("ui_accept"):
 		braking = true
@@ -46,6 +59,24 @@ func _input(event):
 
 
 func _physics_process(delta: float) -> void:
+	
+	# Handle gravity reduction timer
+	if gravity_reduction_timer > 0:
+		gravity_reduction_timer -= delta
+		if gravity_reduction_timer <= 0:
+			gravity_effect = 1.0
+			
+	# Handle speed boost duration
+	if speed_boost_timer > 0:
+		speed_boost_timer -= delta
+		if speed_boost_timer <= 0:
+			speed = normal_speed # Reset speed after boost duration
+
+			
+	var effective_gravity = gravity * gravity_effect
+	velocity.y -= effective_gravity * delta
+	
+
 	# Simulate gravity
 	velocity.y -= gravity * delta
 	
@@ -66,10 +97,11 @@ func _physics_process(delta: float) -> void:
 	velocity = simulate_drag(velocity, delta)
 	
 	# Forward motion
-	var forward_speed = base_speed + (sin(pitch) * glide_descent_rate)
-	forward_speed = max(forward_speed, base_speed)
+	var forward_speed = speed + (sin(pitch) * glide_descent_rate)
+	forward_speed = max(forward_speed, speed) # Ensure forward_speed is at least the current speed (base or boosted)
+
 	var forward_direction = -transform.basis.z.normalized()
-	velocity += forward_direction * forward_speed  * delta
+	velocity += forward_direction * forward_speed * delta
 	
 	if not braking:
 		velocity += forward_direction * speed * delta
@@ -106,3 +138,7 @@ func simulate_drag(velocity: Vector3, delta: float) -> Vector3:
 	velocity -= drag_force
 
 	return velocity
+	
+func activate_reduced_gravity() -> void:
+	gravity_effect = reduced_gravity_effect
+	gravity_reduction_timer = gravity_reduction_duration
