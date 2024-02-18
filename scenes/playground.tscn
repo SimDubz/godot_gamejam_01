@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cmbc41qcke40u" path="res://arts/kloofendal_48d_partly_cloudy_puresky_2k.hdr" id="1_0ynvu"]
 [ext_resource type="PackedScene" uid="uid://crb76rxl0vs71" path="res://scenes/enemy.tscn" id="1_dmrs0"]
-[ext_resource type="PackedScene" uid="uid://b8cq2fskop7tn" path="res://scenes/landing_zone.tscn" id="1_mre1v"]
+[ext_resource type="PackedScene" uid="uid://cdr0rtyk4dq26" path="res://scenes/landing_zone.tscn" id="1_mre1v"]
 [ext_resource type="PackedScene" uid="uid://dvky5ym53pejp" path="res://scenes/player.tscn" id="2_vm42v"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_v8602"]

@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="gamejam_01"
-run/main_scene="res://scenes/playground.tscn"
+run/main_scene="res://scenes/game_world.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://arts/icon.svg"
+
+[autoload]
+
+GameData="*res://scripts/game_data.gd"
 
 [input]
 

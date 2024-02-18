@@ -4,4 +4,6 @@ signal planeLanded
 
 
 func _on_body_entered(body: Node3D) -> void:
-	emit_signal("planeLanded")
+	if body.is_in_group("plane"):
+		print("Landed")
+		emit_signal("planeLanded")
