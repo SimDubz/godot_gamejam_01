@@ -71,7 +71,7 @@ func set_castles_position():
 	for castle in castles:
 		var min_x = -cube_size / 2.0
 		var max_x = cube_size / 2.0
-		var min_y = -cube_size / 4.0# Adjust to ensure castles are between player and landing zone
+		var min_y = -cube_size / 4.0 # Adjust to ensure castles are between player and landing zone
 		var max_y = cube_size / 4.0
 		var min_z = 0.0  # Start from player's depth
 		var max_z = cube_size / 2.0  # Up to halfway to the landing zone

@@ -15,6 +15,7 @@ script = ExtResource("1_i3yvh")
 [node name="CharacterModel" type="Node3D" parent="."]
 
 [node name="castle_base" parent="CharacterModel" instance=ExtResource("2_dcusn")]
+unique_name_in_owner = true
 
 [node name="CanonEdge" type="Marker3D" parent="CharacterModel"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0695744, 53.0025, 26.5431)

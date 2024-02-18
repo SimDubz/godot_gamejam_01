@@ -65,7 +65,8 @@ func handle_input(event) -> void:
 	handle_pitch_and_gravity(event)
 	handle_braking(event)
 	handle_rotation(event)
-	
+	handle_quit_game(event)
+
 func handle_pitch_and_gravity(event) -> void:
 	""""""
 	
@@ -95,6 +96,10 @@ func handle_rotation(event) -> void:
 		target_roll = deg_to_rad(-45)
 		target_yaw  += deg_to_rad(-10)
 
+func handle_quit_game(event) -> void:
+	
+	if Input.is_action_pressed("escape"):
+		get_tree().quit()
 
 func handle_physics_process(delta: float) -> void:
 	""""""

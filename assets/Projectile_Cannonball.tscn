@@ -38,6 +38,7 @@ size = 2.5
 curve = SubResource("Curve_pr4ms")
 
 [node name="Projectile_Cannonball" type="MeshInstance3D"]
+transform = Transform3D(7.735, 0, 0, 0, 7.735, 0, 0, 0, 7.735, 0, 0, 0)
 mesh = SubResource("SphereMesh_ublsy")
 
 [node name="VerticalTrail" type="GPUParticles3D" parent="."]

@@ -1,0 +1,62 @@
+[gd_scene load_steps=2 format=3 uid="uid://bwo7wjr6jwa5y"]
+
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_h6byo"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_h6byo")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_right = 1185.0
+offset_bottom = 677.0
+color = Color(0, 0, 0, 0.788235)
+
+[node name="PlayButton" type="Button" parent="CanvasLayer"]
+offset_left = 499.0
+offset_top = 192.0
+offset_right = 660.0
+offset_bottom = 234.0
+text = "Play"
+
+[node name="ExitButton" type="Button" parent="CanvasLayer"]
+offset_left = 499.0
+offset_top = 247.0
+offset_right = 660.0
+offset_bottom = 290.0
+text = "Exit Game"
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 445.0
+offset_top = 116.0
+offset_right = 716.0
+offset_bottom = 176.0
+text = "Sky Full Of Castles"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="TextEdit" type="TextEdit" parent="CanvasLayer"]
+offset_left = 118.0
+offset_top = 374.0
+offset_right = 1035.0
+offset_bottom = 614.0
+text = "Goal:
+
+Fly plane to landing zone without getting it by projectiles. The more landing zones you reach, the better your score.
+
+Controls:
+
+- Pitch | Mouse (Y-Axis)
+- Rotate | Q (Left) E (Right)"
+wrap_mode = 1
+autowrap_mode = 1
+
+[connection signal="pressed" from="CanvasLayer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/ExitButton" to="." method="_on_exit_button_pressed"]
