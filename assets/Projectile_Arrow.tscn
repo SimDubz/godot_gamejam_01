@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://olobsr8jbqpf"]
+[gd_scene load_steps=13 format=3 uid="uid://olobsr8jbqpf"]
 
 [ext_resource type="PackedScene" uid="uid://drvy2esldcgb0" path="res://arts/meshes/SM_Arrow.glb" id="1_wwqm2"]
 [ext_resource type="Shader" path="res://arts/shaders/shader_base.gdshader" id="2_mupqo"]
 [ext_resource type="Texture2D" uid="uid://c6r8b1doni40o" path="res://arts/textures/T_Arrow_basecolor.png" id="3_ulenr"]
+[ext_resource type="Texture2D" uid="uid://cv02rrqk1r1af" path="res://arts/textures/vfx/T_Smoke_03.png" id="4_dm8pd"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u7he5"]
 render_priority = 0
@@ -10,30 +11,45 @@ shader = ExtResource("2_mupqo")
 shader_parameter/albedo_color = Color(1, 1, 1, 1)
 shader_parameter/texture_albedo = ExtResource("3_ulenr")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_denkv"]
-cull_mode = 2
-shading_mode = 0
-specular_mode = 2
-disable_fog = true
-vertex_color_use_as_albedo = true
-albedo_color = Color(0.792157, 0.792157, 0.792157, 1)
-billboard_keep_scale = true
-use_particle_trails = true
+[sub_resource type="Gradient" id="Gradient_hqpmk"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_d42n7"]
-direction = Vector3(0, 0, 1)
-spread = 0.0
-initial_velocity_min = -5.0
-initial_velocity_max = -5.0
-gravity = Vector3(0, 0, 0)
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_wbi3p"]
+gradient = SubResource("Gradient_hqpmk")
 
-[sub_resource type="Curve" id="Curve_thcd0"]
-_data = [Vector2(0, 0), 0.0, 1.87411, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+[sub_resource type="Curve" id="Curve_erjhq"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.246951), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_mvehv"]
-size = 0.325
-curve = SubResource("Curve_thcd0")
+[sub_resource type="CurveTexture" id="CurveTexture_udqnj"]
+curve = SubResource("Curve_erjhq")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_d42n7"]
+lifetime_randomness = 0.5
+emission_shape = 1
+emission_sphere_radius = 0.01
+angle_min = -180.0
+angle_max = 180.0
+direction = Vector3(0, 0, 1)
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.5
+scale_max = 0.5
+scale_curve = SubResource("CurveTexture_udqnj")
+color_ramp = SubResource("GradientTexture1D_wbi3p")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o0e0h"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+disable_fog = true
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("4_dm8pd")
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_mw7u2"]
+material = SubResource("StandardMaterial3D_o0e0h")
 
 [node name="Projectile_Arrow" instance=ExtResource("1_wwqm2")]
 
@@ -41,12 +57,8 @@ curve = SubResource("Curve_thcd0")
 material_override = SubResource("ShaderMaterial_u7he5")
 
 [node name="Trail" type="GPUParticles3D" parent="SM_arrow" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.08786)
-material_override = SubResource("StandardMaterial3D_denkv")
-amount = 10
-lifetime = 1.5
-local_coords = true
-trail_enabled = true
-trail_lifetime = 3.0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.216)
+amount = 7
+lifetime = 0.5
 process_material = SubResource("ParticleProcessMaterial_d42n7")
-draw_pass_1 = SubResource("RibbonTrailMesh_mvehv")
+draw_pass_1 = SubResource("QuadMesh_mw7u2")
