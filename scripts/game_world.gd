@@ -51,7 +51,7 @@ func connect_landing_signal():
 	""""""
 	
 	var landing_zone =  get_tree().get_first_node_in_group("landing")
-	var landing_area = landing_zone.get_child(1)
+	var landing_area = landing_zone.get_child(0)
 	landing_area.connect("planeLanded", player_landed)
 	
 func set_landing_position():

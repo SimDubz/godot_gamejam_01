@@ -1,5 +1,6 @@
 extends CharacterBody3D
 
+@onready var barrel_plane: Node3D = $CharacterModel/barrel_plane
 
 # Base configuration 
 var base_speed = 50
@@ -56,8 +57,14 @@ func _physics_process(delta: float) -> void:
 func _hit_by_projectile():
 	lives -= 1
 	emit_signal("lives_updated", lives)
+	
+	if lives == 1:
+		var flames = barrel_plane.get_tree().get_nodes_in_group("flame")
+		for flame in flames:
+			flame.emitting = true
+		
 	if lives <= 0:
-		get_tree().quit()
+		get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 
 ### UTILS FUNCTIONS ###
 
