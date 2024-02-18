@@ -79,7 +79,7 @@ billboard_keep_scale = true
 [sub_resource type="QuadMesh" id="QuadMesh_yemem"]
 material = SubResource("StandardMaterial3D_r5ikd")
 
-[node name="vfx_Flametrower" type="Node3D"]
+[node name="vfx_Flametrower" type="Node3D" groups=["fire_effect"]]
 
 [node name="FlameAdd" type="GPUParticles3D" parent="."]
 amount = 35
