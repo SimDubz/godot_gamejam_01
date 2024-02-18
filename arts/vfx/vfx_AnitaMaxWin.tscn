@@ -108,11 +108,9 @@ material = SubResource("StandardMaterial3D_eodyk")
 [node name="vfx_AnitaMaxWin" type="Node3D"]
 
 [node name="Stars" type="GPUParticles3D" parent="."]
-emitting = false
 amount = 30
 amount_ratio = 0.5
 lifetime = 1.5
-one_shot = true
 explosiveness = 1.0
 randomness = 1.0
 local_coords = true
@@ -120,10 +118,8 @@ process_material = SubResource("ParticleProcessMaterial_8vdcc")
 draw_pass_1 = SubResource("QuadMesh_pxu3u")
 
 [node name="Hearts" type="GPUParticles3D" parent="."]
-emitting = false
 amount = 15
 lifetime = 1.5
-one_shot = true
 explosiveness = 1.0
 randomness = 1.0
 local_coords = true

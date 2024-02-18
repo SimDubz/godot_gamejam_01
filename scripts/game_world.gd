@@ -5,6 +5,8 @@ var player_scene = preload("res://scenes/player.tscn")
 var landing_zone_scene = preload("res://scenes/landing_zone.tscn")
 var continue_menu_scene  = preload("res://scenes/progression_menu.tscn")
 var user_interface_scene  = preload("res://scenes/user_interface.tscn")
+var clouds_scene  = preload("res://arts/vfx/vfx_Clouds01.tscn")
+
 var cube_size = 400
 var box_center = Vector3.ZERO
 var box_extents = Vector3(cube_size, cube_size, cube_size)
@@ -28,6 +30,7 @@ func _ready():
 	set_player_position()
 	set_landing_position()
 	set_castles_position()
+	set_clouds_position()
 	connect_landing_signal()
 	
 	
@@ -54,6 +57,7 @@ func generate_world():
 	spawn_player()
 	spawn_castle()
 	spawn_landing_zone()
+	spawn_clouds(7)
 	spaw_user_interface()
 
 func connect_landing_signal():
@@ -62,6 +66,28 @@ func connect_landing_signal():
 	var landing_zone =  get_tree().get_first_node_in_group("landing")
 	var landing_area = landing_zone.get_child(0)
 	landing_area.connect("planeLanded", player_landed)
+	
+func set_clouds_position():
+	""""""
+	
+	var clouds = get_tree().get_nodes_in_group("clouds")
+	
+	for cloud in clouds:
+		var min_x = -cube_size / 2.0
+		var max_x = cube_size / 2.0
+		var min_y = -cube_size / 4.0 # Adjust to ensure castles are between player and landing zone
+		var max_y = cube_size / 4.0
+		var min_z = 0.0  # Start from player's depth
+		var max_z = cube_size / 2.0  # Up to halfway to the landing zone
+
+		var spawn_position = Vector3(
+			randf_range(min_x, max_x),
+			randf_range(min_y, max_y),
+			randf_range(min_z, max_z)
+		)
+		
+		cloud.global_transform.origin = spawn_position
+	
 	
 func set_landing_position():
 	""""""
@@ -92,6 +118,12 @@ func set_castles_position():
 				castle.global_transform.origin = spawn_position
 				placed = true
 
+func spawn_clouds(nbr_of_clouds):
+	
+	for i in range(nbr_of_clouds):
+		var clouds_instance = clouds_scene.instantiate()
+		add_child(clouds_instance)
+	
 
 		
 func spaw_user_interface():

@@ -31,7 +31,7 @@ billboard_mode = 1
 material = SubResource("StandardMaterial3D_l6pl5")
 size = Vector2(5, 5)
 
-[node name="Cloud01" type="GPUParticles3D"]
+[node name="Cloud01" type="GPUParticles3D" groups=["clouds"]]
 amount = 35
 amount_ratio = 0.85
 lifetime = 25.0
