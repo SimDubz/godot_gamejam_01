@@ -59,6 +59,6 @@ mesh = SubResource("SphereMesh_ublsy")
 
 [node name="Trail" type="GPUParticles3D" parent="."]
 amount = 10
-lifetime = 0.6
+lifetime = 0.7
 process_material = SubResource("ParticleProcessMaterial_2lys4")
 draw_pass_1 = SubResource("QuadMesh_h7eov")

@@ -27,14 +27,14 @@ curve = SubResource("Curve_erjhq")
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_d42n7"]
 lifetime_randomness = 0.5
 emission_shape = 1
-emission_sphere_radius = 0.01
+emission_sphere_radius = 0.1
 angle_min = -180.0
 angle_max = 180.0
 direction = Vector3(0, 0, 1)
-spread = 0.0
+spread = 0.5
 gravity = Vector3(0, 0, 0)
-scale_min = 0.5
-scale_max = 0.5
+scale_min = 3.0
+scale_max = 4.5
 scale_curve = SubResource("CurveTexture_udqnj")
 color_ramp = SubResource("GradientTexture1D_wbi3p")
 
@@ -58,7 +58,7 @@ transform = Transform3D(7.735, 0, 0, 0, 7.735, 0, 0, 0, 7.735, 0, 0, 0)
 material_override = SubResource("ShaderMaterial_u7he5")
 
 [node name="Trail" type="GPUParticles3D" parent="SM_arrow" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.216)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00437741, -0.00329264, -2.29998)
 amount = 7
 lifetime = 0.5
 process_material = SubResource("ParticleProcessMaterial_d42n7")
