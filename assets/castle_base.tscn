@@ -1,0 +1,57 @@
+[gd_scene load_steps=14 format=3 uid="uid://sfjnu27dlrmu"]
+
+[ext_resource type="PackedScene" uid="uid://cp6htvbkny7kj" path="res://arts/meshes/castle_base.glb" id="1_vnbkc"]
+[ext_resource type="Shader" path="res://arts/shaders/shader_base.gdshader" id="2_qnnby"]
+[ext_resource type="Texture2D" uid="uid://bhtcniu46544l" path="res://arts/textures/castle/Island_basecolor_baked.png" id="3_aon1f"]
+[ext_resource type="Texture2D" uid="uid://doohsy6bhauqc" path="res://arts/textures/castle/Banner_red_basecolor.png" id="4_eayeu"]
+[ext_resource type="Texture2D" uid="uid://cct1h1n5obwqo" path="res://arts/textures/castle/Tops_basecolor_baked.png" id="5_5dq26"]
+[ext_resource type="Texture2D" uid="uid://cdson6mlf1a1s" path="res://arts/textures/castle/Brick_basecolor.png" id="6_ppd1q"]
+[ext_resource type="Texture2D" uid="uid://b0cl64e58nwlu" path="res://arts/textures/castle/Tower_basecolor_baked.png" id="7_18s2f"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c0cfq"]
+render_priority = 0
+shader = ExtResource("2_qnnby")
+shader_parameter/albedo_color = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("3_aon1f")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gcxnl"]
+render_priority = 0
+shader = ExtResource("2_qnnby")
+shader_parameter/albedo_color = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("4_eayeu")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gcp80"]
+render_priority = 0
+shader = ExtResource("2_qnnby")
+shader_parameter/albedo_color = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("5_5dq26")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rrcjo"]
+render_priority = 0
+shader = ExtResource("2_qnnby")
+shader_parameter/albedo_color = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("6_ppd1q")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uescu"]
+render_priority = 0
+shader = ExtResource("2_qnnby")
+shader_parameter/albedo_color = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("7_18s2f")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dj167"]
+render_priority = 0
+shader = ExtResource("2_qnnby")
+shader_parameter/albedo_color = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("7_18s2f")
+
+[node name="castle_base" instance=ExtResource("1_vnbkc")]
+
+[node name="island" parent="." index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_c0cfq")
+surface_material_override/1 = SubResource("ShaderMaterial_gcxnl")
+surface_material_override/2 = SubResource("ShaderMaterial_gcp80")
+surface_material_override/3 = SubResource("ShaderMaterial_rrcjo")
+surface_material_override/4 = SubResource("ShaderMaterial_uescu")
+
+[node name="tower_pivot" parent="island" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_dj167")

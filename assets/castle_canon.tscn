@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=3 uid="uid://6oyldh7vtrif"]
+
+[ext_resource type="PackedScene" uid="uid://b023hffde8j3u" path="res://arts/meshes/castle_canon.glb" id="1_dasom"]
+[ext_resource type="Shader" path="res://arts/shaders/shader_base.gdshader" id="2_qru3h"]
+[ext_resource type="Texture2D" uid="uid://380aisxmfi4u" path="res://arts/textures/castle/Canon_basecolor.png" id="3_ofwb4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_062es"]
+render_priority = 0
+shader = ExtResource("2_qru3h")
+shader_parameter/albedo_color = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("3_ofwb4")
+
+[node name="castle_canon" instance=ExtResource("1_dasom")]
+
+[node name="canon" parent="." index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_062es")
