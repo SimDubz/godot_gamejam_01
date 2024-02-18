@@ -24,7 +24,7 @@ point_count = 2
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_xu1ku"]
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_0dnlv"]
 curve_x = SubResource("Curve_yxpdb")
 curve_y = SubResource("Curve_q7toh")
 curve_z = SubResource("Curve_5yr72")
@@ -39,7 +39,7 @@ initial_velocity_max = 25.0
 gravity = Vector3(0, -20, 0)
 scale_min = 0.15
 scale_max = 0.5
-scale_curve = SubResource("CurveXYZTexture_xu1ku")
+scale_curve = SubResource("CurveXYZTexture_0dnlv")
 color = Color(5, 2, 1, 1)
 
 [sub_resource type="QuadMesh" id="QuadMesh_joakf"]
@@ -112,7 +112,6 @@ color = Color(0, 0, 0, 1)
 [sub_resource type="QuadMesh" id="QuadMesh_acswp"]
 
 [node name="vfx_Explosion" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.6665, 0)
 
 [node name="Sparks" type="GPUParticles3D" parent="."]
 material_override = SubResource("StandardMaterial3D_tamjg")
