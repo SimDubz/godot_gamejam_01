@@ -1,0 +1,48 @@
+[gd_scene load_steps=2 format=3 uid="uid://bunp7qwj0s47n"]
+
+[ext_resource type="Script" path="res://scenes/progression_menu.gd" id="1_pa1ab"]
+
+[node name="ProgressionMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pa1ab")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_right = 1174.0
+offset_bottom = 654.0
+color = Color(0, 0, 0, 0.392157)
+
+[node name="ContinuePlaying" type="Label" parent="CanvasLayer"]
+offset_left = 386.0
+offset_top = 209.0
+offset_right = 758.0
+offset_bottom = 278.0
+text = "Continue Playing"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="YesButton" type="Button" parent="CanvasLayer"]
+unique_name_in_owner = true
+offset_left = 507.0
+offset_top = 297.0
+offset_right = 634.0
+offset_bottom = 334.0
+text = "Yes"
+
+[node name="NoButton" type="Button" parent="CanvasLayer"]
+unique_name_in_owner = true
+offset_left = 508.0
+offset_top = 348.0
+offset_right = 635.0
+offset_bottom = 385.0
+text = "No"
+
+[connection signal="pressed" from="CanvasLayer/YesButton" to="." method="_on_yes_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/NoButton" to="." method="_on_no_button_pressed"]

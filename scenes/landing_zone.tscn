@@ -8,7 +8,7 @@ albedo_color = Color(0.105882, 0.560784, 0.0666667, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_2s02j"]
 size = Vector3(19.5493, 4.93213, 20.811)
 
-[node name="LandingZone" type="Node3D"]
+[node name="LandingZone" type="Node3D" groups=["landing"]]
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 use_collision = true
