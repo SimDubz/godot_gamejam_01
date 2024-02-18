@@ -57,3 +57,6 @@ surface_material_override/4 = SubResource("ShaderMaterial_uescu")
 
 [node name="tower_pivot" parent="island" index="0"]
 surface_material_override/0 = SubResource("ShaderMaterial_dj167")
+
+[node name="aim_start" type="Node3D" parent="island" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 52.662, 0)
