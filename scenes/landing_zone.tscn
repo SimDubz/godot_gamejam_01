@@ -1,25 +1,29 @@
-[gd_scene load_steps=4 format=3 uid="uid://cdr0rtyk4dq26"]
+[gd_scene load_steps=5 format=3 uid="uid://cdr0rtyk4dq26"]
 
 [ext_resource type="Script" path="res://scripts/LandingArea.gd" id="1_20c4y"]
+[ext_resource type="PackedScene" path="res://assets/landing_zone.tscn" id="2_d7wcj"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6qfgn"]
 albedo_color = Color(0.105882, 0.560784, 0.0666667, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2s02j"]
-size = Vector3(19.5493, 4.93213, 20.811)
+size = Vector3(95.2915, 4.93213, 96.1114)
 
 [node name="LandingZone" type="Node3D" groups=["landing"]]
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.269716, 0, 0.229126)
 use_collision = true
-size = Vector3(18.4214, 1, 20)
+size = Vector3(95.0863, 1, 95.7014)
 material = SubResource("StandardMaterial3D_6qfgn")
 
 [node name="LandingArea" type="Area3D" parent="."]
 script = ExtResource("1_20c4y")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LandingArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.23568, 1.96606, 0.0679626)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.371984, 1.96606, 0.229256)
 shape = SubResource("BoxShape3D_2s02j")
+
+[node name="root" parent="." instance=ExtResource("2_d7wcj")]
 
 [connection signal="body_entered" from="LandingArea" to="LandingArea" method="_on_body_entered"]

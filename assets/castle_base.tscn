@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://bp4hr7pwxpny1"]
 
 [ext_resource type="PackedScene" uid="uid://cp6htvbkny7kj" path="res://arts/meshes/castle_base.glb" id="1_vnbkc"]
-[ext_resource type="Script" path="res://assets/castle_base.gd" id="2_jwx85"]
+[ext_resource type="Script" path="res://scripts/castle_base.gd" id="2_dy0s3"]
 [ext_resource type="Shader" path="res://arts/shaders/shader_base.gdshader" id="2_qnnby"]
 [ext_resource type="Texture2D" uid="uid://bhtcniu46544l" path="res://arts/textures/castle/Island_basecolor_baked.png" id="3_aon1f"]
 [ext_resource type="Texture2D" uid="uid://doohsy6bhauqc" path="res://arts/textures/castle/Banner_red_basecolor.png" id="4_eayeu"]
@@ -46,7 +46,7 @@ shader_parameter/albedo_color = Color(1, 1, 1, 1)
 shader_parameter/texture_albedo = ExtResource("7_18s2f")
 
 [node name="castle_base" instance=ExtResource("1_vnbkc")]
-script = ExtResource("2_jwx85")
+script = ExtResource("2_dy0s3")
 
 [node name="island" parent="." index="0"]
 surface_material_override/0 = SubResource("ShaderMaterial_c0cfq")
