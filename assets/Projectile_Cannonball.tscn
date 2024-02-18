@@ -1,4 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://0pc18bmli7qd"]
+[gd_scene load_steps=11 format=3 uid="uid://0pc18bmli7qd"]
+
+[ext_resource type="Texture2D" uid="uid://dob3muib57s0u" path="res://arts/textures/vfx/T_Smoke_02.png" id="1_tejd0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vs5se"]
 disable_fog = true
@@ -10,49 +12,54 @@ material = SubResource("StandardMaterial3D_vs5se")
 radial_segments = 18
 rings = 12
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2lys4"]
-direction = Vector3(0, 0, -1)
-spread = 0.0
-initial_velocity_min = 10.0
-initial_velocity_max = 10.0
-gravity = Vector3(0, 0, 0)
+[sub_resource type="Gradient" id="Gradient_udgte"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
-[sub_resource type="Curve" id="Curve_pr4ms"]
-resource_local_to_scene = true
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_pscus"]
+gradient = SubResource("Gradient_udgte")
+
+[sub_resource type="Curve" id="Curve_v3s0j"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.246951), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3xl1y"]
-cull_mode = 2
+[sub_resource type="CurveTexture" id="CurveTexture_3gxkg"]
+curve = SubResource("Curve_v3s0j")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2lys4"]
+lifetime_randomness = 0.3
+particle_flag_align_y = true
+emission_shape = 1
+emission_sphere_radius = 0.5
+angle_min = -180.0
+angle_max = 180.0
+direction = Vector3(0, 0, -1)
+spread = 0.05
+gravity = Vector3(0, 0, 0)
+scale_min = 8.0
+scale_max = 8.0
+scale_curve = SubResource("CurveTexture_3gxkg")
+color_ramp = SubResource("GradientTexture1D_pscus")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h50q2"]
+transparency = 1
+blend_mode = 1
 shading_mode = 0
 disable_fog = true
 vertex_color_use_as_albedo = true
-albedo_color = Color(0.792157, 0.792157, 0.792157, 1)
+albedo_texture = ExtResource("1_tejd0")
+billboard_mode = 1
 billboard_keep_scale = true
-use_particle_trails = true
 
-[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_hopsj"]
-material = SubResource("StandardMaterial3D_3xl1y")
-shape = 0
-size = 2.5
-curve = SubResource("Curve_pr4ms")
+[sub_resource type="QuadMesh" id="QuadMesh_h7eov"]
+material = SubResource("StandardMaterial3D_h50q2")
 
 [node name="Projectile_Cannonball" type="MeshInstance3D"]
 transform = Transform3D(7.735, 0, 0, 0, 7.735, 0, 0, 0, 7.735, 0, 0, 0)
 mesh = SubResource("SphereMesh_ublsy")
 
-[node name="VerticalTrail" type="GPUParticles3D" parent="."]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0.373958)
-local_coords = true
-trail_enabled = true
-trail_lifetime = 3.0
+[node name="Trail" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+amount = 10
+lifetime = 0.6
 process_material = SubResource("ParticleProcessMaterial_2lys4")
-draw_pass_1 = SubResource("RibbonTrailMesh_hopsj")
-
-[node name="HorizontalTrail" type="GPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.373958)
-local_coords = true
-trail_enabled = true
-trail_lifetime = 3.0
-process_material = SubResource("ParticleProcessMaterial_2lys4")
-draw_pass_1 = SubResource("RibbonTrailMesh_hopsj")
+draw_pass_1 = SubResource("QuadMesh_h7eov")
