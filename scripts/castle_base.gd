@@ -54,6 +54,7 @@ func aim_player(speed):
 		return
 	var player_velocity = player_body.velocity
 	var target_pos = get_future_player_position(player_body.global_transform.origin, player_velocity, 50)
+	
 	aim_start.look_at(target_pos, Vector3.FORWARD)
 	pivot_weapon.global_rotation_degrees.x = aim_start.global_rotation_degrees.x *-1
 	tower_pivot.global_rotation_degrees.y = aim_start.global_rotation_degrees.y + 180
