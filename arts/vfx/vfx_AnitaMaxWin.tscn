@@ -1,0 +1,131 @@
+[gd_scene load_steps=17 format=3 uid="uid://bj6jb2nprktvu"]
+
+[ext_resource type="Texture2D" uid="uid://bolah1b0rj7qi" path="res://arts/textures/vfx/T_ToonStar.png" id="1_kf5t0"]
+[ext_resource type="Texture2D" uid="uid://x4isadagwhx2" path="res://arts/textures/vfx/T_ToonHeart.png" id="2_pmx5l"]
+
+[sub_resource type="Curve" id="Curve_xgkvw"]
+_data = [Vector2(0.496296, 0.990091), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ufaf1"]
+curve = SubResource("Curve_xgkvw")
+
+[sub_resource type="Curve" id="Curve_qls37"]
+_data = [Vector2(0.248148, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.504573), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_57r1f"]
+curve = SubResource("Curve_qls37")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8vdcc"]
+lifetime_randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 5.0
+angle_max = 180.0
+spread = 180.0
+initial_velocity_min = 20.0
+initial_velocity_max = 30.0
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
+gravity = Vector3(0, -5, 0)
+damping_min = 5.0
+damping_max = 10.0
+scale_min = 4.0
+scale_max = 7.0
+scale_curve = SubResource("CurveTexture_57r1f")
+color = Color(0.847059, 0.768627, 0, 1)
+emission_curve = SubResource("CurveTexture_ufaf1")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lq2dv"]
+transparency = 2
+alpha_scissor_threshold = 0.05
+alpha_antialiasing_mode = 0
+shading_mode = 0
+disable_fog = true
+vertex_color_use_as_albedo = true
+albedo_color = Color(1.5, 1.5, 1.5, 1)
+albedo_texture = ExtResource("1_kf5t0")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_pxu3u"]
+material = SubResource("StandardMaterial3D_lq2dv")
+
+[sub_resource type="Curve" id="Curve_7l1ka"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_r16wf"]
+curve = SubResource("Curve_7l1ka")
+
+[sub_resource type="Curve" id="Curve_q2ixo"]
+_data = [Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_e614d"]
+curve = SubResource("Curve_q2ixo")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_sbwp7"]
+lifetime_randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 1.0
+angle_min = -180.0
+angle_max = 180.0
+spread = 180.0
+initial_velocity_min = 20.0
+initial_velocity_max = 30.0
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
+gravity = Vector3(0, -5, 0)
+damping_min = 10.0
+damping_max = 15.0
+scale_min = 3.0
+scale_max = 5.0
+scale_curve = SubResource("CurveTexture_e614d")
+color = Color(0, 0.835294, 0.345098, 1)
+emission_curve = SubResource("CurveTexture_r16wf")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eodyk"]
+transparency = 2
+alpha_scissor_threshold = 0.05
+alpha_antialiasing_mode = 0
+shading_mode = 0
+disable_fog = true
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("2_pmx5l")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_3ryj0"]
+material = SubResource("StandardMaterial3D_eodyk")
+
+[node name="vfx_AnitaMaxWin" type="Node3D"]
+
+[node name="Stars" type="GPUParticles3D" parent="."]
+emitting = false
+amount = 30
+amount_ratio = 0.5
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_8vdcc")
+draw_pass_1 = SubResource("QuadMesh_pxu3u")
+
+[node name="Hearts" type="GPUParticles3D" parent="."]
+emitting = false
+amount = 15
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_sbwp7")
+draw_pass_1 = SubResource("QuadMesh_3ryj0")
