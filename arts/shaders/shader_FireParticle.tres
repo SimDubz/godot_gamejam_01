@@ -1,4 +1,4 @@
-[gd_resource type="VisualShader" load_steps=19 format=3 uid="uid://dramhxqofjjp8"]
+[gd_resource type="VisualShader" load_steps=19 format=3 uid="uid://c18muo1npedx0"]
 
 [sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_jkcvo"]
 parameter_name = "DissolveTexture"
