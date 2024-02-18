@@ -6,10 +6,6 @@ var projectil_flame_scene = preload("res://arts/vfx/vfx_Flametrower.tscn")
 func _ready() -> void:
 	%Timer.start()
 
-func set_properties():
-	var projectile_instance = projectil_flame_scene.instantiate()
-	anchor.add_child(projectile_instance)
-
 func _on_body_entered(body: Node3D) -> void:
 	print("Body entered")
 	if body.is_in_group("plane"):

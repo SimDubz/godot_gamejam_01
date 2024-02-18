@@ -56,7 +56,6 @@ func shoot_at_plane(weapon: Node3D):
 			var projectile_flame = projectile_flame_scene.instantiate()
 			get_tree().root.add_child(projectile_flame)
 			projectile_flame.global_transform.origin = canon_edge.global_transform.origin
-			projectile_flame.call("set_properties")
 			
 	else:
 		print("Player not found, cannot shoot at plane.")
