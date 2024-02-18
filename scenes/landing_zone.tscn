@@ -1,13 +1,24 @@
-[gd_scene load_steps=5 format=3 uid="uid://cdr0rtyk4dq26"]
+[gd_scene load_steps=8 format=3 uid="uid://cdr0rtyk4dq26"]
 
 [ext_resource type="Script" path="res://scripts/LandingArea.gd" id="1_20c4y"]
-[ext_resource type="PackedScene" path="res://assets/landing_zone.tscn" id="2_d7wcj"]
+[ext_resource type="Shader" path="res://arts/shaders/shader_base.gdshader" id="2_s4nk7"]
+[ext_resource type="PackedScene" uid="uid://ditlhtrksvbe6" path="res://assets/green_banner.tscn" id="3_x22x4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6qfgn"]
 albedo_color = Color(0.105882, 0.560784, 0.0666667, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2s02j"]
 size = Vector3(95.2915, 4.93213, 96.1114)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nfsjx"]
+render_priority = 0
+shader = ExtResource("2_s4nk7")
+shader_parameter/albedo_color = Color(0.145098, 0.47451, 0, 1)
+
+[sub_resource type="TorusMesh" id="TorusMesh_bsw1v"]
+material = SubResource("ShaderMaterial_nfsjx")
+inner_radius = 30.0
+outer_radius = 35.0
 
 [node name="LandingZone" type="Node3D" groups=["landing"]]
 
@@ -24,6 +35,19 @@ script = ExtResource("1_20c4y")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.371984, 1.96606, 0.229256)
 shape = SubResource("BoxShape3D_2s02j")
 
-[node name="root" parent="." instance=ExtResource("2_d7wcj")]
+[node name="ring" type="MeshInstance3D" parent="."]
+mesh = SubResource("TorusMesh_bsw1v")
+
+[node name="banner_01" parent="." instance=ExtResource("3_x22x4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 35)
+
+[node name="banner_02" parent="." instance=ExtResource("3_x22x4")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.4, -35)
+
+[node name="banner_03" parent="." instance=ExtResource("3_x22x4")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 35, 1.4, 0)
+
+[node name="banner_04" parent="." instance=ExtResource("3_x22x4")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -35, 1.4, 0)
 
 [connection signal="body_entered" from="LandingArea" to="LandingArea" method="_on_body_entered"]
