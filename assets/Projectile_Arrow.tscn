@@ -52,6 +52,7 @@ billboard_keep_scale = true
 material = SubResource("StandardMaterial3D_o0e0h")
 
 [node name="Projectile_Arrow" instance=ExtResource("1_wwqm2")]
+transform = Transform3D(7.735, 0, 0, 0, 7.735, 0, 0, 0, 7.735, 0, 0, 0)
 
 [node name="SM_arrow" parent="." index="0"]
 material_override = SubResource("ShaderMaterial_u7he5")

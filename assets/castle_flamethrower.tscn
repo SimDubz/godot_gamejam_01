@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cyrgf6ibojbat"]
+[gd_scene load_steps=5 format=3 uid="uid://bcb463y6pp1vu"]
 
 [ext_resource type="PackedScene" uid="uid://bm56nex7ybxh" path="res://arts/meshes/castle_flamethrower.glb" id="1_b7svi"]
 [ext_resource type="Shader" path="res://arts/shaders/shader_base.gdshader" id="2_qe4gl"]
