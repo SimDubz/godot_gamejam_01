@@ -23,7 +23,7 @@ outer_radius = 35.0
 script = ExtResource("1_20c4y")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LandingArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.371984, -0.838604, 0.229256)
+transform = Transform3D(1, 8.24388e-05, 3.19253e-05, -8.24388e-05, 1, 5.61324e-05, -3.19253e-05, -5.61324e-05, 1, 0.371984, -0.838604, 0.229256)
 shape = SubResource("CylinderShape3D_v4p7o")
 
 [node name="ring" type="MeshInstance3D" parent="."]
