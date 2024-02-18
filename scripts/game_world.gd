@@ -4,6 +4,7 @@ var castle_scene = preload("res://scenes/enemy.tscn")
 var player_scene = preload("res://scenes/player.tscn")
 var landing_zone_scene = preload("res://scenes/landing_zone.tscn")
 var continue_menu_scene  = preload("res://scenes/progression_menu.tscn")
+var user_interface_scene  = preload("res://scenes/user_interface.tscn")
 var cube_size = 400
 var box_center = Vector3.ZERO
 var box_extents = Vector3(cube_size, cube_size, cube_size)
@@ -44,6 +45,7 @@ func generate_world():
 	spawn_player()
 	spawn_castle()
 	spawn_landing_zone()
+	spaw_user_interface()
 
 func connect_landing_signal():
 	""""""
@@ -84,6 +86,12 @@ func set_castles_position():
 		
 		castle.global_transform.origin = spawn_position
 		
+func spaw_user_interface():
+	""""""
+	
+	var interface_instance = user_interface_scene.instantiate()
+	add_child(interface_instance)
+	
 func spawn_player():
 	""""""
 	

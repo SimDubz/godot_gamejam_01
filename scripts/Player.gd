@@ -17,7 +17,7 @@ var target_roll = 0.0
 var target_yaw = 0.0
 var roll_speed = 1.0
 var current_speed = 0.0
-var kmh_speed = 0.0
+var kmh_speed = 0
 var gravity = 6.5
 var max_pitch_down = deg_to_rad(-45)
 var max_pitch_up = deg_to_rad(30)
@@ -30,9 +30,11 @@ var normal_speed = 2.0
 var boosted_speed = 100 # Adjust as needed for the desired boost effect
 var speed_boost_duration = 2.0 # Duration of the speed boost in seconds
 var speed_boost_timer = 0.0 # Timer to track the speed boost duration
-var lives = 2
+@export var lives = 2
 
 signal plane_position_updated(new_position)
+signal lives_updated(new_lives_count)
+signal kmh_updated(speed_updated)
 
 func _ready() -> void:
 	""""""
@@ -53,7 +55,7 @@ func _physics_process(delta: float) -> void:
 
 func _hit_by_projectile():
 	lives -= 1
-	print(lives)
+	emit_signal("lives_updated", lives)
 	if lives <= 0:
 		get_tree().quit()
 
@@ -135,6 +137,7 @@ func calculate_speed(delta: float) -> void:
 	
 	current_speed = velocity.length()
 	kmh_speed = units_per_second_to_kmh(current_speed)
+	emit_signal("kmh_updated", kmh_speed)
 	
 func simulate_lift_and_drag(delta: float) -> void:
 	""""""
@@ -170,7 +173,7 @@ func apply_movement_and_rotation(delta: float) -> void:
 func units_per_second_to_kmh(units_per_second: float) -> float:
 	""""""
 	
-	return units_per_second * 3.6
+	return int(units_per_second * 3.6)
 
 
 func simulate_drag(velocity: Vector3, delta: float) -> Vector3:
