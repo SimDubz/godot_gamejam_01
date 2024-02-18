@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bcb463y6pp1vu"]
+[gd_scene load_steps=6 format=3 uid="uid://bcb463y6pp1vu"]
 
 [ext_resource type="PackedScene" uid="uid://bm56nex7ybxh" path="res://arts/meshes/castle_flamethrower.glb" id="1_b7svi"]
 [ext_resource type="Shader" path="res://arts/shaders/shader_base.gdshader" id="2_qe4gl"]
 [ext_resource type="Texture2D" uid="uid://btmcn8e7nr6ex" path="res://arts/textures/castle/Flamethrower_basecolor_baked.png" id="3_hn042"]
+[ext_resource type="PackedScene" uid="uid://dl8tkhe4y0yuo" path="res://scenes/flame_projectile.tscn" id="4_6khro"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cv7vb"]
 render_priority = 0
@@ -14,3 +15,8 @@ shader_parameter/texture_albedo = ExtResource("3_hn042")
 
 [node name="flamethrower" parent="." index="0"]
 surface_material_override/0 = SubResource("ShaderMaterial_cv7vb")
+
+[node name="edge" type="Marker3D" parent="flamethrower" index="0" groups=["edge"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 34.8763)
+
+[node name="flame_projectile" parent="flamethrower/edge" index="0" instance=ExtResource("4_6khro")]

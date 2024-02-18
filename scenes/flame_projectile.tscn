@@ -19,10 +19,4 @@ transform = Transform3D(0.888889, 0, 0, 0, -3.88546e-08, 0.888889, 0, -0.888889,
 
 [node name="Anchor" type="Node3D" parent="."]
 
-[node name="Timer" type="Timer" parent="."]
-unique_name_in_owner = true
-wait_time = 5.0
-one_shot = true
-
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

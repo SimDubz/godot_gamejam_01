@@ -14,3 +14,6 @@ shader_parameter/texture_albedo = ExtResource("3_ofwb4")
 
 [node name="canon" parent="." index="0"]
 surface_material_override/0 = SubResource("ShaderMaterial_062es")
+
+[node name="edge" type="Marker3D" parent="canon" index="0" groups=["edge"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 23.6957)
