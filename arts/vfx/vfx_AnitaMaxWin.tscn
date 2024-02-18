@@ -4,7 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://x4isadagwhx2" path="res://arts/textures/vfx/T_ToonHeart.png" id="2_pmx5l"]
 
 [sub_resource type="Curve" id="Curve_xgkvw"]
-_data = [Vector2(0.496296, 0.990091), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+max_value = 2.0
+_data = [Vector2(0.496296, 2), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CurveTexture" id="CurveTexture_ufaf1"]
@@ -23,8 +24,8 @@ emission_shape = 1
 emission_sphere_radius = 5.0
 angle_max = 180.0
 spread = 180.0
-initial_velocity_min = 20.0
-initial_velocity_max = 30.0
+initial_velocity_min = 30.0
+initial_velocity_max = 40.0
 angular_velocity_min = -720.0
 angular_velocity_max = 720.0
 gravity = Vector3(0, -5, 0)
@@ -33,7 +34,7 @@ damping_max = 10.0
 scale_min = 4.0
 scale_max = 7.0
 scale_curve = SubResource("CurveTexture_57r1f")
-color = Color(0.847059, 0.768627, 0, 1)
+color = Color(0.705882, 0.643137, 0, 1)
 emission_curve = SubResource("CurveTexture_ufaf1")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lq2dv"]
@@ -75,8 +76,8 @@ emission_sphere_radius = 1.0
 angle_min = -180.0
 angle_max = 180.0
 spread = 180.0
-initial_velocity_min = 20.0
-initial_velocity_max = 30.0
+initial_velocity_min = 27.5
+initial_velocity_max = 37.5
 angular_velocity_min = -720.0
 angular_velocity_max = 720.0
 gravity = Vector3(0, -5, 0)
@@ -85,7 +86,7 @@ damping_max = 15.0
 scale_min = 3.0
 scale_max = 5.0
 scale_curve = SubResource("CurveTexture_e614d")
-color = Color(0, 0.835294, 0.345098, 1)
+color = Color(0.647059, 0.0901961, 0, 1)
 emission_curve = SubResource("CurveTexture_r16wf")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eodyk"]
