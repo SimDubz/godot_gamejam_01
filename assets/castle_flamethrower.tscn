@@ -10,7 +10,7 @@ shader = ExtResource("2_qe4gl")
 shader_parameter/albedo_color = Color(1, 1, 1, 1)
 shader_parameter/texture_albedo = ExtResource("3_hn042")
 
-[node name="castle_flamethrower" groups=["flame"] instance=ExtResource("1_b7svi")]
+[node name="castle_flamethrower" groups=["fire"] instance=ExtResource("1_b7svi")]
 
 [node name="flamethrower" parent="." index="0"]
 surface_material_override/0 = SubResource("ShaderMaterial_cv7vb")

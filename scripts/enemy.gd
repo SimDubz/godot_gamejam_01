@@ -18,7 +18,6 @@ func _on_shoot_timer_timeout():
 func _on_range_body_entered(body: Node3D):
 	""""""
 	
-	print("Plane Entered")
 	if body.is_in_group("plane"):
 		plane_in_bounds = true
 
@@ -26,7 +25,6 @@ func _on_range_body_entered(body: Node3D):
 func _on_range_body_exited(body: Node3D) -> void:
 	""""""
 	
-	print("Plane Existed")
 	if body.is_in_group("plane"):
 		plane_in_bounds = false
 		
@@ -41,7 +39,8 @@ func shoot_at_plane(weapon: Node3D):
 		var player_position = get_plane_position()
 		var player_velocity = player.velocity
 		
-		if projectile_type == GameData.WEAPON.CANON or GameData.WEAPON.ARROW:
+		if projectile_type == GameData.WEAPON.CANON or projectile_type == GameData.WEAPON.ARROW:
+			
 			
 			var projectile = projectile_scene.instantiate()
 			var future_position = get_refined_future_position(player_position, player_velocity, projectile.speed)
@@ -51,7 +50,8 @@ func shoot_at_plane(weapon: Node3D):
 			projectile.global_transform.origin = canon_edge.global_transform.origin
 			projectile.call("set_properties", direction, projectile_type)
 		
-		elif projectile_type == GameData.WEAPON.FLAME:
+		elif projectile_type == GameData.WEAPON.FIRE:
+			print("FLAME")
 			
 			var projectile_flame = projectile_flame_scene.instantiate()
 			get_tree().root.add_child(projectile_flame)
@@ -63,19 +63,19 @@ func shoot_at_plane(weapon: Node3D):
 	
 func get_projectile_type(weapon: Node3D):
 	""""""
-	
+	print("Checking weapon group for:", weapon.name)  # Debug line
 	var projectile_type = ""
 	
 	if weapon.is_in_group("canon"):
 		projectile_type = GameData.WEAPON.CANON
 		return projectile_type
 	
-	if weapon.is_in_group("arrow"):
+	elif weapon.is_in_group("arrow"):
 		projectile_type = GameData.WEAPON.ARROW
 		return projectile_type
 		
-	if weapon.is_in_group("flame"):
-		projectile_type = GameData.WEAPON.FLAME
+	elif weapon.is_in_group("fire"):
+		projectile_type = GameData.WEAPON.FIRE
 		return projectile_type
 	
 func get_plane_position() -> Vector3:

@@ -18,7 +18,7 @@ script = ExtResource("1_i3yvh")
 unique_name_in_owner = true
 
 [node name="CanonEdge" type="Marker3D" parent="CharacterModel"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0695744, 53.0025, 26.5431)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0695744, 53.0025, 39.5431)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.18058, 9.19064, 0.30415)
