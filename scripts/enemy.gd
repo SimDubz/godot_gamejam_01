@@ -21,6 +21,7 @@ func _on_range_body_entered(body: Node3D):
 	
 	if body.is_in_group("plane"):
 		plane_in_bounds = true
+		castle_base.enable_aim(body)
 
 
 func _on_range_body_exited(body: Node3D) -> void:
