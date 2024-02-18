@@ -1,5 +1,5 @@
 shader_type spatial;
-render_mode unshaded;
+render_mode unshaded, fog_disabled;
 uniform vec4 albedo_color : source_color = vec4(1,1,1,1);
 uniform sampler2D texture_albedo : source_color, filter_linear;
 
