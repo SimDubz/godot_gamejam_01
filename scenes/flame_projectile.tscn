@@ -13,3 +13,10 @@ transform = Transform3D(1.125, 0, 0, 0, -4.91753e-08, -1.125, 0, 1.125, -4.91753
 shape = SubResource("CapsuleShape3D_us3r7")
 
 [node name="Anchor" type="Node3D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 5.0
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

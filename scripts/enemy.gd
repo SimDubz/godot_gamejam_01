@@ -15,6 +15,7 @@ func _on_shoot_timer_timeout():
 		
 		shoot_at_plane(weapon)
 		
+
 func _on_range_body_entered(body: Node3D):
 	""""""
 	
@@ -51,7 +52,6 @@ func shoot_at_plane(weapon: Node3D):
 			projectile.call("set_properties", direction, projectile_type)
 		
 		elif projectile_type == GameData.WEAPON.FIRE:
-			print("FLAME")
 			
 			var projectile_flame = projectile_flame_scene.instantiate()
 			get_tree().root.add_child(projectile_flame)
@@ -63,7 +63,6 @@ func shoot_at_plane(weapon: Node3D):
 	
 func get_projectile_type(weapon: Node3D):
 	""""""
-	print("Checking weapon group for:", weapon.name)  # Debug line
 	var projectile_type = ""
 	
 	if weapon.is_in_group("canon"):
