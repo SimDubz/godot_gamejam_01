@@ -13,3 +13,6 @@ func get_successful_landings():
 	
 	return successful_landings
 	
+func reset_successful_landings():
+	successful_landings = 0
+	

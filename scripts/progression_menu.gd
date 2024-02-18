@@ -16,3 +16,4 @@ func _on_no_button_pressed() -> void:
 	""""""
 	
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+	GameData.reset_successful_landings()
