@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://crqotjwg4tljh"]
+
+[ext_resource type="PackedScene" uid="uid://ditlhtrksvbe6" path="res://assets/green_banner.tscn" id="1_l27lk"]
+
+[node name="root" type="Node3D"]
+
+[node name="banner_01" parent="." instance=ExtResource("1_l27lk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 50)
+
+[node name="banner_02" parent="." instance=ExtResource("1_l27lk")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -50)
+
+[node name="banner_03" parent="." instance=ExtResource("1_l27lk")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 50, 0, 0)
+
+[node name="banner_04" parent="." instance=ExtResource("1_l27lk")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -50, 0, 0)
