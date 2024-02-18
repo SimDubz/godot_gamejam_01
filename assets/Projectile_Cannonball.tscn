@@ -58,7 +58,6 @@ transform = Transform3D(7.735, 0, 0, 0, 7.735, 0, 0, 0, 7.735, 0, 0, 0)
 mesh = SubResource("SphereMesh_ublsy")
 
 [node name="Trail" type="GPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 amount = 10
 lifetime = 0.6
 process_material = SubResource("ParticleProcessMaterial_2lys4")
