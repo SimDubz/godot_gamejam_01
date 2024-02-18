@@ -4,7 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://bcyokri8rejgf" path="res://assets/barrel_plane.tscn" id="2_44qof"]
 [ext_resource type="Script" path="res://scripts/pivot.gd" id="2_53jvj"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_o16as"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_07e76"]
+size = Vector3(1.62781, 1.71497, 2.47125)
 
 [node name="Player" type="CharacterBody3D" groups=["plane"]]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
@@ -12,7 +13,8 @@ motion_mode = 1
 script = ExtResource("1_d8bry")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("SphereShape3D_o16as")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00262451, -0.923297, -0.356171)
+shape = SubResource("BoxShape3D_07e76")
 
 [node name="CharacterModel" type="Node3D" parent="."]
 
