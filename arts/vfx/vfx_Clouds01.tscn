@@ -10,7 +10,7 @@ point_count = 3
 curve = SubResource("Curve_7mj6y")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_sp27c"]
-emission_shape_scale = Vector3(3, 3, 3)
+emission_shape_scale = Vector3(10, 10, 10)
 emission_shape = 3
 emission_box_extents = Vector3(4, 2, 3)
 angle_min = -180.0
@@ -22,8 +22,8 @@ initial_velocity_max = 0.75
 gravity = Vector3(0, 0, 0)
 damping_min = 0.25
 damping_max = 0.5
-scale_min = 3.0
-scale_max = 5.0
+scale_min = 20.0
+scale_max = 25.0
 scale_curve = SubResource("CurveTexture_j2itb")
 turbulence_noise_strength = 3.0
 turbulence_influence_min = 0.25
@@ -42,15 +42,18 @@ billboard_keep_scale = true
 particles_anim_h_frames = 1
 particles_anim_v_frames = 1
 particles_anim_loop = false
+proximity_fade_enabled = true
 
 [sub_resource type="QuadMesh" id="QuadMesh_j0q5v"]
 material = SubResource("StandardMaterial3D_l6pl5")
 size = Vector2(5, 5)
 
 [node name="Cloud01" type="GPUParticles3D" groups=["clouds"]]
-amount = 110
+amount = 30
 amount_ratio = 0.9
 lifetime = 30.0
 explosiveness = 0.98
+visibility_aabb = AABB(-57.9833, -4, -4, 115.967, 8, 8)
+local_coords = true
 process_material = SubResource("ParticleProcessMaterial_sp27c")
 draw_pass_1 = SubResource("QuadMesh_j0q5v")
