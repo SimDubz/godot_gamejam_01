@@ -2,22 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bdn2vfc4yaudv"
-path.s3tc="res://.godot/imported/castle_base_Brick_basecolor.png-cba0ae3e21f478ba88fd74b74b195ea3.s3tc.ctex"
+uid="uid://btmcn8e7nr6ex"
+path="res://.godot/imported/Flamethrower_basecolor_baked.png-b998957ea4471609bc3e667f6fea858d.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
-generator_parameters={}
 
 [deps]
 
-source_file="res://arts/meshes/castle_base_Brick_basecolor.png"
-dest_files=["res://.godot/imported/castle_base_Brick_basecolor.png-cba0ae3e21f478ba88fd74b74b195ea3.s3tc.ctex"]
+source_file="res://arts/textures/castle/Flamethrower_basecolor_baked.png"
+dest_files=["res://.godot/imported/Flamethrower_basecolor_baked.png-b998957ea4471609bc3e667f6fea858d.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

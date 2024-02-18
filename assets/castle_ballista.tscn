@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://edl0xuh653hk"]
+
+[ext_resource type="PackedScene" uid="uid://df34ytsfqprpj" path="res://arts/meshes/castle_ballista.glb" id="1_rpw8b"]
+[ext_resource type="Shader" path="res://arts/shaders/shader_base.gdshader" id="2_ar64b"]
+[ext_resource type="Texture2D" uid="uid://buaurdjyasooy" path="res://arts/textures/castle/Ballista_basecolor_baked.png" id="3_jcsgg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0oe41"]
+render_priority = 0
+shader = ExtResource("2_ar64b")
+shader_parameter/albedo_color = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("3_jcsgg")
+
+[node name="castle_ballista" instance=ExtResource("1_rpw8b")]
+
+[node name="ballista" parent="." index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_0oe41")
+
+[node name="SM_arrow" parent="ballista" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_0oe41")

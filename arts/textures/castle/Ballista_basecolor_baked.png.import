@@ -2,22 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7lcapjpkqnfe"
-path.s3tc="res://.godot/imported/castle_base_Banner_red_basecolor.png-55b5471449e33627c152b0f981a0c625.s3tc.ctex"
+uid="uid://buaurdjyasooy"
+path="res://.godot/imported/Ballista_basecolor_baked.png-cef9e10a13a0695b11b2e362a7c88510.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
-generator_parameters={}
 
 [deps]
 
-source_file="res://arts/meshes/castle_base_Banner_red_basecolor.png"
-dest_files=["res://.godot/imported/castle_base_Banner_red_basecolor.png-55b5471449e33627c152b0f981a0c625.s3tc.ctex"]
+source_file="res://arts/textures/castle/Ballista_basecolor_baked.png"
+dest_files=["res://.godot/imported/Ballista_basecolor_baked.png-cef9e10a13a0695b11b2e362a7c88510.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
