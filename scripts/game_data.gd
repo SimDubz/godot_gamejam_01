@@ -1,6 +1,6 @@
 extends Node
 
-enum WEAPON {CANON, ARROW}
+enum WEAPON {CANON, ARROW, FIRE}
 var successful_landings = 0
 
 func increment_landings():

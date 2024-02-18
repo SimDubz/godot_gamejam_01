@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dl8tkhe4y0yuo"]
+
+[ext_resource type="Script" path="res://scripts/flame_projectile.gd" id="1_f6pti"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_us3r7"]
+height = 2.9014
+
+[node name="flame_projectile" type="Area3D"]
+script = ExtResource("1_f6pti")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.125, 0, 0, 0, -4.91753e-08, -1.125, 0, 1.125, -4.91753e-08, 0.431293, 0.194856, 1.61256)
+shape = SubResource("CapsuleShape3D_us3r7")
+
+[node name="Anchor" type="Node3D" parent="."]
