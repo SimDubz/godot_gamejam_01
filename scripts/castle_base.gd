@@ -28,6 +28,20 @@ func _physics_process(delta):
 	if aim_enabled:
 		aim_player(aim_speed * delta)
 		
+func get_future_player_position(
+	player_position: Vector3,
+	player_velocity: Vector3,
+	projectile_speed: float) -> Vector3:
+	""""""
+	
+	var distance_to_player = player_position.distance_to(pivot_weapon.global_transform.origin)
+	var time_to_hit = distance_to_player / projectile_speed
+	var future_position = player_position + player_velocity * time_to_hit
+	
+	# Additional refinements based on player's current action, acceleration, etc.
+	
+	return future_position
+		
 func enable_aim(body):
 	player_body = body
 	aim_enabled = true
@@ -38,7 +52,9 @@ func aim_player(speed):
 	var distance = aim_start.global_transform.origin.distance_to(player_body.global_transform.origin)
 	if distance > aim_limit:
 		return
-	aim_start.look_at(player_body.global_transform.origin, Vector3.FORWARD)
+	var player_velocity = player_body.velocity
+	var target_pos = get_future_player_position(player_body.global_transform.origin, player_velocity, 50)
+	aim_start.look_at(target_pos, Vector3.FORWARD)
 	pivot_weapon.global_rotation_degrees.x = aim_start.global_rotation_degrees.x *-1
 	tower_pivot.global_rotation_degrees.y = aim_start.global_rotation_degrees.y + 180
 	
