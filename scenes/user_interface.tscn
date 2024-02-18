@@ -1,6 +1,28 @@
 [gd_scene load_steps=2 format=3 uid="uid://bhlou6kbjvy5l"]
 
 [sub_resource type="GDScript" id="GDScript_tnp55"]
+script/source = "extends Control
+
+func _ready() -> void:
+	\"\"\"\"\"\"
+	
+	var player = get_tree().get_first_node_in_group(\"plane\")
+	$VBoxContainer/Life.text = \"Life: \" + str(player.lives)
+	$VBoxContainer/Kmh.text = \"KM/H: \" + str(round(player.kmh_speed))
+	$VBoxContainer/Level.text = \"Level: \" + str(GameData.get_successful_landings())
+	player.connect(\"lives_updated\", _on_player_lives_updated)
+	player.connect(\"kmh_updated\", _on_player_speed_updated)
+	
+func _on_player_lives_updated(new_lives_count):
+	\"\"\"\"\"\"
+
+	$VBoxContainer/Life.text = \"Life: \" + str(new_lives_count)
+
+func _on_player_speed_updated(speed_updated):
+	\"\"\"\"\"\"
+	
+	$VBoxContainer/Kmh.text = \"KM/H: \" + str(speed_updated)
+"
 
 [node name="UserInterface" type="Control"]
 layout_mode = 3
@@ -11,7 +33,23 @@ grow_horizontal = 2
 grow_vertical = 2
 script = SubResource("GDScript_tnp55")
 
-[node name="SpeedDisplay" type="TextEdit" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_right = 188.0
-offset_bottom = 52.0
+offset_right = 83.0
+offset_bottom = 128.0
+
+[node name="Life" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Kmh" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Level" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
