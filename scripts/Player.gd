@@ -30,6 +30,7 @@ var normal_speed = 2.0
 var boosted_speed = 100 # Adjust as needed for the desired boost effect
 var speed_boost_duration = 2.0 # Duration of the speed boost in seconds
 var speed_boost_timer = 0.0 # Timer to track the speed boost duration
+var lives = 2
 
 signal plane_position_updated(new_position)
 
@@ -49,6 +50,12 @@ func _physics_process(delta: float) -> void:
 	emit_signal("plane_position_updated", global_transform.origin)
 	handle_physics_process(delta)
 	move_and_slide()
+
+func _hit_by_projectile():
+	lives -= 1
+	print(lives)
+	if lives <= 0:
+		get_tree().quit()
 
 ### UTILS FUNCTIONS ###
 

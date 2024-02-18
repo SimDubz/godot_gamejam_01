@@ -12,7 +12,9 @@ func _physics_process(delta: float) -> void:
 	translate(velocity * delta)
 
 func _on_body_entered(body: Node3D) -> void:
-	queue_free()
+	if body.is_in_group("plane"):
+		body._hit_by_projectile()
+		queue_free()
 
 ### UTILS FUNCTIONS ###
 

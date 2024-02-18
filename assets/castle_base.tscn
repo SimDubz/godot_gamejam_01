@@ -58,3 +58,6 @@ surface_material_override/4 = SubResource("ShaderMaterial_uescu")
 surface_material_override/0 = SubResource("ShaderMaterial_dj167")
 
 [node name="castle_canon" parent="island/tower_pivot/pivot_weapon" index="0" instance=ExtResource("8_3ke7r")]
+
+[node name="CanonEdge" type="Marker3D" parent="island/tower_pivot/pivot_weapon/castle_canon" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.487192, 0, 24.3258)
