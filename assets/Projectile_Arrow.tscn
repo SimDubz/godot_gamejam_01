@@ -33,8 +33,8 @@ angle_max = 180.0
 direction = Vector3(0, 0, 1)
 spread = 0.5
 gravity = Vector3(0, 0, 0)
-scale_min = 3.0
-scale_max = 4.5
+scale_min = 4.0
+scale_max = 6.0
 scale_curve = SubResource("CurveTexture_udqnj")
 color_ramp = SubResource("GradientTexture1D_wbi3p")
 
@@ -45,8 +45,11 @@ shading_mode = 0
 disable_fog = true
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("4_dm8pd")
-billboard_mode = 1
+billboard_mode = 3
 billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
 
 [sub_resource type="QuadMesh" id="QuadMesh_mw7u2"]
 material = SubResource("StandardMaterial3D_o0e0h")
@@ -59,7 +62,6 @@ material_override = SubResource("ShaderMaterial_u7he5")
 
 [node name="Trail" type="GPUParticles3D" parent="SM_arrow" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00437741, -0.00329264, -2.29998)
-amount = 7
-lifetime = 0.5
+amount = 15
 process_material = SubResource("ParticleProcessMaterial_d42n7")
 draw_pass_1 = SubResource("QuadMesh_mw7u2")

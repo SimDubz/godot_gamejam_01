@@ -47,8 +47,11 @@ shading_mode = 0
 disable_fog = true
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("1_tejd0")
-billboard_mode = 1
+billboard_mode = 3
 billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
 
 [sub_resource type="QuadMesh" id="QuadMesh_h7eov"]
 material = SubResource("StandardMaterial3D_h50q2")
@@ -58,7 +61,7 @@ transform = Transform3D(7.735, 0, 0, 0, 7.735, 0, 0, 0, 7.735, 0, 0, 0)
 mesh = SubResource("SphereMesh_ublsy")
 
 [node name="Trail" type="GPUParticles3D" parent="."]
-amount = 10
-lifetime = 0.7
+amount = 15
+lifetime = 0.9
 process_material = SubResource("ParticleProcessMaterial_2lys4")
 draw_pass_1 = SubResource("QuadMesh_h7eov")
