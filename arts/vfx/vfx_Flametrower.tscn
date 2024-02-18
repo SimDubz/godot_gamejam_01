@@ -29,7 +29,7 @@ transparency = 1
 shading_mode = 0
 disable_fog = true
 vertex_color_use_as_albedo = true
-albedo_color = Color(3, 1, 0.1, 0.5)
+albedo_color = Color(2.75, 1, 0.1, 0.5)
 albedo_texture = ExtResource("1_0id8f")
 billboard_mode = 1
 billboard_keep_scale = true
@@ -80,7 +80,6 @@ billboard_keep_scale = true
 material = SubResource("StandardMaterial3D_r5ikd")
 
 [node name="vfx_Flametrower" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="FlameAdd" type="GPUParticles3D" parent="."]
 amount = 35
