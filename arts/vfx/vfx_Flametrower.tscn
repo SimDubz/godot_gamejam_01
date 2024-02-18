@@ -12,13 +12,15 @@ curve = SubResource("Curve_ws5tg")
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_daxam"]
 emission_shape = 1
 emission_sphere_radius = 0.15
-direction = Vector3(0, 0, 1)
+direction = Vector3(0, 0, 0)
 spread = 3.0
-initial_velocity_min = 4.0
-initial_velocity_max = 5.0
+initial_velocity_min = 40.0
+initial_velocity_max = 45.0
 gravity = Vector3(0, 0, 0)
 damping_min = 3.5
 damping_max = 5.0
+scale_min = 8.0
+scale_max = 10.0
 scale_curve = SubResource("CurveTexture_b0xds")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ep7fo"]
@@ -27,7 +29,7 @@ transparency = 1
 shading_mode = 0
 disable_fog = true
 vertex_color_use_as_albedo = true
-albedo_color = Color(5, 2, 0.25, 0.5)
+albedo_color = Color(3, 1, 0.1, 0.5)
 albedo_texture = ExtResource("1_0id8f")
 billboard_mode = 1
 billboard_keep_scale = true
@@ -53,14 +55,14 @@ curve = SubResource("Curve_e4fk1")
 emission_shape = 1
 emission_sphere_radius = 0.3
 direction = Vector3(0, 0, 1)
-spread = 7.5
-initial_velocity_min = 4.0
-initial_velocity_max = 5.0
+spread = 5.5
+initial_velocity_min = 41.0
+initial_velocity_max = 45.5
 gravity = Vector3(0, 0, 0)
 damping_min = 3.0
 damping_max = 4.0
-scale_min = 3.0
-scale_max = 5.0
+scale_min = 25.0
+scale_max = 30.0
 scale_curve = SubResource("CurveTexture_5sj8l")
 color_ramp = SubResource("GradientTexture1D_s7eht")
 
@@ -78,15 +80,15 @@ billboard_keep_scale = true
 material = SubResource("StandardMaterial3D_r5ikd")
 
 [node name="vfx_Flametrower" type="Node3D"]
-transform = Transform3D(0.98328, 0, 0.182098, -0.0221922, 0.992546, 0.119832, -0.180741, -0.121869, 0.975951, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="FlameAdd" type="GPUParticles3D" parent="."]
-amount = 12
+amount = 35
 process_material = SubResource("ParticleProcessMaterial_daxam")
 draw_pass_1 = SubResource("QuadMesh_g46dv")
 
 [node name="FlameAB" type="GPUParticles3D" parent="."]
-amount = 7
+amount = 25
 lifetime = 1.2
 process_material = SubResource("ParticleProcessMaterial_8a0sw")
 draw_pass_1 = SubResource("QuadMesh_yemem")
