@@ -8,16 +8,18 @@ var user_interface_scene  = preload("res://scenes/user_interface.tscn")
 var cube_size = 400
 var box_center = Vector3.ZERO
 var box_extents = Vector3(cube_size, cube_size, cube_size)
-var min_castles = 5
+var min_castles = 4
 var castle_increase_per_landing = 1
 var successful_landings = GameData.get_successful_landings()
 var max_distance = 1000
 var min_distance = 500
+var min_distance_between_castles = 200.0
 var total_castles = min_castles + successful_landings + castle_increase_per_landing
 var landing_zone_position = Vector3(
 	randf_range(-cube_size / 4.0, cube_size / 4.0), -cube_size / 2.0, -cube_size / 2.0
 	)
-
+var grid_size = 20.0 
+var grid = {}
 
 func _ready():
 	""""""
@@ -38,6 +40,13 @@ func _physics_process(delta: float) -> void:
 		show_continue_menu()
 		
 ### UTILS FUNCTIONS ###
+func world_to_grid(position):
+	""""""
+	
+	var x = floor(position.x / grid_size)
+	var y = floor(position.y / grid_size)
+	var z = floor(position.z / grid_size)
+	return Vector3(x, y, z)
 
 func generate_world():
 	""""""
@@ -67,24 +76,23 @@ func set_player_position():
 	player.global_transform.origin =  Vector3(0, cube_size, cube_size)
 
 func set_castles_position():
-	""""""
-	
 	var castles = get_tree().get_nodes_in_group("castles")
-	for castle in castles:
-		var min_x = -cube_size / 2.0
-		var max_x = cube_size / 2.0
-		var min_y = -cube_size / 4.0 # Adjust to ensure castles are between player and landing zone
-		var max_y = cube_size / 4.0
-		var min_z = 0.0  # Start from player's depth
-		var max_z = cube_size / 2.0  # Up to halfway to the landing zone
 
-		var spawn_position = Vector3(
-			randf_range(min_x, max_x),
-			randf_range(min_y, max_y),
-			randf_range(min_z, max_z)
-		)
-		
-		castle.global_transform.origin = spawn_position
+	for castle in castles:
+		var placed = false
+		while not placed:
+			var spawn_position = Vector3(
+				randf_range(-cube_size / 2.0, cube_size / 2.0),
+				randf_range(-cube_size / 4.0, cube_size / 4.0),
+				randf_range(0.0, cube_size / 2.0)
+			)
+			var grid_position = world_to_grid(spawn_position)
+			if not grid.has(grid_position):
+				grid[grid_position] = true
+				castle.global_transform.origin = spawn_position
+				placed = true
+
+
 		
 func spaw_user_interface():
 	""""""

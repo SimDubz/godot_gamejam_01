@@ -3,6 +3,7 @@ extends CharacterBody3D
 @onready var castle_base: Node3D = $CharacterModel/castle_base
 @onready var canon_edge: Marker3D = $CharacterModel/CanonEdge
 var projectile_scene = preload("res://scenes/projectile.tscn")
+var projectile_flame_scene = preload("res://scenes/flame_projectile.tscn")
 var plane_in_bounds = false
 
 
@@ -36,17 +37,27 @@ func shoot_at_plane(weapon: Node3D):
 	
 	var player = get_tree().get_first_node_in_group("plane")
 	if player:
+		var projectile_type = get_projectile_type(weapon)
 		var player_position = get_plane_position()
 		var player_velocity = player.velocity
-		var projectile = projectile_scene.instantiate()
-		var projectile_type = get_projectile_type(weapon)
-		var future_position = get_refined_future_position(player_position, player_velocity, projectile.speed)
-		var direction = (future_position - canon_edge.global_transform.origin).normalized()
-		get_tree().root.add_child(projectile)
-		projectile.global_transform.origin = canon_edge.global_transform.origin
 		
 		if projectile_type == GameData.WEAPON.CANON or GameData.WEAPON.ARROW:
+			
+			var projectile = projectile_scene.instantiate()
+			var future_position = get_refined_future_position(player_position, player_velocity, projectile.speed)
+			var direction = (future_position - canon_edge.global_transform.origin).normalized()
+			
+			get_tree().root.add_child(projectile)
+			projectile.global_transform.origin = canon_edge.global_transform.origin
 			projectile.call("set_properties", direction, projectile_type)
+		
+		elif projectile_type == GameData.WEAPON.FLAME:
+			
+			var projectile_flame = projectile_flame_scene.instantiate()
+			get_tree().root.add_child(projectile_flame)
+			projectile_flame.global_transform.origin = canon_edge.global_transform.origin
+			projectile_flame.call("set_properties")
+			
 	else:
 		print("Player not found, cannot shoot at plane.")
 	
@@ -61,6 +72,10 @@ func get_projectile_type(weapon: Node3D):
 	
 	if weapon.is_in_group("arrow"):
 		projectile_type = GameData.WEAPON.ARROW
+		return projectile_type
+		
+	if weapon.is_in_group("flame"):
+		projectile_type = GameData.WEAPON.FLAME
 		return projectile_type
 	
 func get_plane_position() -> Vector3:

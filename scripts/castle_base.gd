@@ -5,7 +5,7 @@ var castle_canon_scene = preload("res://assets/castle_canon.tscn")
 var castle_ballista_scene = preload("res://assets/castle_ballista.tscn")
 var castle_flamethrower_scene = preload("res://assets/castle_flamethrower.tscn")
 
-var weapons_scene = [castle_canon_scene, castle_ballista_scene]
+var weapons_scene = [castle_canon_scene, castle_ballista_scene, castle_flamethrower_scene]
 
 func _ready() -> void:
 	""""""

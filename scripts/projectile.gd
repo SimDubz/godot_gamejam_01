@@ -37,7 +37,6 @@ func set_properties(new_direction: Vector3, projectile_type: GameData.WEAPON) ->
 		var target_look_at = projectile_instance.global_transform.origin - direction
 		projectile_instance.look_at(target_look_at, Vector3.UP)
 		
-		# If additional setup is needed, do it here
 
 func _on_timer_timeout() -> void:
 	queue_free()
