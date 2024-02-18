@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=3 uid="uid://ditlhtrksvbe6"]
+
+[ext_resource type="PackedScene" uid="uid://brh85bnugrsms" path="res://arts/meshes/banner.glb" id="1_wnvoq"]
+[ext_resource type="Shader" path="res://arts/shaders/shader_base.gdshader" id="2_sic34"]
+[ext_resource type="Texture2D" uid="uid://cl23lrbajv0hg" path="res://arts/textures/castle/Banner_green_basecolor.png" id="3_mbg6s"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_is7i1"]
+render_priority = 0
+shader = ExtResource("2_sic34")
+shader_parameter/albedo_color = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("3_mbg6s")
+
+[node name="green_banner" instance=ExtResource("1_wnvoq")]
+
+[node name="banner" parent="." index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_is7i1")
