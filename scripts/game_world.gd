@@ -43,8 +43,9 @@ func _physics_process(delta: float) -> void:
 		
 		var explosion = explosion_scene.instantiate()
 		player.add_child(explosion)
-		for i in range(explosion.get_children().size()):
-			var effect = explosion.get_child(i)
+		
+		var explosions = explosion.get_tree().get_nodes_in_group("death")
+		for effect in explosions:
 			effect.emitting = true
 			
 		
