@@ -22,6 +22,8 @@ var landing_zone_position = Vector3(
 	)
 var grid_size = 20.0 
 var grid = {}
+var is_not_dead = true
+
 
 func _ready():
 	""""""
@@ -39,23 +41,28 @@ func _physics_process(delta: float) -> void:
 	""""""
 
 	var player = get_tree().get_first_node_in_group("plane")
-	if player and is_object_out_of_bounds(player.global_transform.origin):
+	if is_not_dead and is_object_out_of_bounds(player.global_transform.origin):
+		is_not_dead = false
+		death(player)
 		
-		var explosion = explosion_scene.instantiate()
-		player.add_child(explosion)
 		
-		var explosions = explosion.get_tree().get_nodes_in_group("death")
-		for effect in explosions:
-			effect.emitting = true
-			
-		
-		var timer = get_tree().create_timer(1.0)
-		await timer.timeout
-		
-		get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 		
 ### UTILS FUNCTIONS ###
 	
+
+func death(player):
+	var explosion = explosion_scene.instantiate()
+	player.add_child(explosion)
+	
+	var explosions = explosion.get_tree().get_nodes_in_group("death")
+	for effect in explosions:
+		effect.emitting = true
+		
+	
+	var timer = get_tree().create_timer(0.5)
+	await timer.timeout
+	
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 
 func world_to_grid(position):
 	""""""
