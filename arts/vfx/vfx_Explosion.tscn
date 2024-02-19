@@ -115,7 +115,7 @@ color = Color(0, 0, 0, 1)
 
 [node name="vfx_Explosion" type="Node3D"]
 
-[node name="Sparks" type="GPUParticles3D" parent="."]
+[node name="Sparks" type="GPUParticles3D" parent="." groups=["death"]]
 material_override = SubResource("StandardMaterial3D_tamjg")
 emitting = false
 amount = 20
@@ -125,7 +125,7 @@ explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_cjq1o")
 draw_pass_1 = SubResource("QuadMesh_joakf")
 
-[node name="Flash" type="GPUParticles3D" parent="."]
+[node name="Flash" type="GPUParticles3D" parent="." groups=["death"]]
 material_override = ExtResource("2_oxy1y")
 emitting = false
 amount = 1
@@ -135,7 +135,7 @@ explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_wmfm3")
 draw_pass_1 = SubResource("QuadMesh_b7bd8")
 
-[node name="Fire" type="GPUParticles3D" parent="."]
+[node name="Fire" type="GPUParticles3D" parent="." groups=["death"]]
 material_override = ExtResource("2_oxy1y")
 emitting = false
 amount = 13
@@ -145,7 +145,7 @@ explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_e8dqp")
 draw_pass_1 = SubResource("QuadMesh_y4f37")
 
-[node name="Smoke" type="GPUParticles3D" parent="."]
+[node name="Smoke" type="GPUParticles3D" parent="." groups=["death"]]
 material_override = ExtResource("2_oxy1y")
 emitting = false
 amount = 10

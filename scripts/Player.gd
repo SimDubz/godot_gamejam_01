@@ -81,10 +81,11 @@ func _hit_by_projectile():
 		var explosion = explosion_scene.instantiate()
 		var player = $CharacterModel
 		player.add_child(explosion)
-		for i in range(explosion.get_children().size()):
-			var effect = explosion.get_child(i)
-			effect.emitting = true
 		
+		var explosions = explosion.get_tree().get_nodes_in_group("death")
+		for effect in explosions:
+			effect.emitting = true
+				
 		var timer = get_tree().create_timer(.5)
 		print(timer)
 		await timer.timeout
