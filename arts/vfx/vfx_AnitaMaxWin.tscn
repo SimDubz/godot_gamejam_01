@@ -1,8 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://bj6jb2nprktvu"]
+[gd_scene load_steps=17 format=3 uid="uid://bj6jb2nprktvu"]
 
 [ext_resource type="Texture2D" uid="uid://bolah1b0rj7qi" path="res://arts/textures/vfx/T_ToonStar.png" id="1_kf5t0"]
 [ext_resource type="Texture2D" uid="uid://x4isadagwhx2" path="res://arts/textures/vfx/T_ToonHeart.png" id="2_pmx5l"]
-[ext_resource type="AudioStream" uid="uid://cdkugj5pra20b" path="res://sounds/winmusic_sound.wav" id="3_4jegd"]
 
 [sub_resource type="Curve" id="Curve_xgkvw"]
 _data = [Vector2(0.496296, 0.990091), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -126,8 +125,3 @@ randomness = 1.0
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_sbwp7")
 draw_pass_1 = SubResource("QuadMesh_3ryj0")
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_4jegd")
-volume_db = -15.0
-autoplay = true
