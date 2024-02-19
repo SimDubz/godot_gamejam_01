@@ -1,7 +1,9 @@
-[gd_scene load_steps=24 format=3 uid="uid://ryb8e1b0nlt4"]
+[gd_scene load_steps=26 format=3 uid="uid://ryb8e1b0nlt4"]
 
 [ext_resource type="Texture2D" uid="uid://nm72sbly486g" path="res://arts/textures/vfx/T_SoftCircle_01.PNG" id="1_jjxy4"]
 [ext_resource type="Material" uid="uid://brc3ehf4hbnyl" path="res://arts/materials/vfx/M_SoftCircle_01.tres" id="2_oxy1y"]
+[ext_resource type="AudioStream" uid="uid://b1v83qr4jnk3" path="res://sounds/explosion_sound.wav" id="3_efcxn"]
+[ext_resource type="AudioStream" uid="uid://oowom21mluf4" path="res://sounds/losemusic_sound.wav" id="4_cl6ru"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tamjg"]
 transparency = 1
@@ -152,3 +154,13 @@ one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_7g5ui")
 draw_pass_1 = SubResource("QuadMesh_acswp")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_efcxn")
+volume_db = -15.0
+autoplay = true
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_cl6ru")
+volume_db = -15.0
+autoplay = true

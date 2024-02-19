@@ -1,7 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://c1bbuxuc2mv6q"]
+[gd_scene load_steps=18 format=3 uid="uid://c1bbuxuc2mv6q"]
 
 [ext_resource type="Texture2D" uid="uid://bl7jyaarntbys" path="res://arts/textures/vfx/T_ToonFlash.png" id="1_tveti"]
 [ext_resource type="Texture2D" uid="uid://nm72sbly486g" path="res://arts/textures/vfx/T_SoftCircle_01.PNG" id="2_up5b5"]
+[ext_resource type="AudioStream" uid="uid://df1djjmk6ttp" path="res://sounds/hit_sound.wav" id="3_covof"]
 
 [sub_resource type="Curve" id="Curve_7n2x7"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -103,3 +104,8 @@ one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_re2we")
 draw_pass_1 = SubResource("QuadMesh_yb6ol")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_covof")
+volume_db = -15.0
+autoplay = true
