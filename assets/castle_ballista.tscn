@@ -17,3 +17,6 @@ surface_material_override/0 = SubResource("ShaderMaterial_0oe41")
 
 [node name="SM_arrow" parent="ballista" index="0"]
 surface_material_override/0 = SubResource("ShaderMaterial_0oe41")
+
+[node name="edge" type="Marker3D" parent="ballista/SM_arrow" index="0" groups=["edge"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 35.9327)
