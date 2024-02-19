@@ -1,7 +1,8 @@
 extends Node
 
 enum WEAPON {CANON, ARROW, FIRE}
-var successful_landings = 0
+var successful_landings = 12
+var lives = 2
 
 func increment_landings():
 	""""""

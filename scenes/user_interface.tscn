@@ -7,7 +7,7 @@ func _ready() -> void:
 	\"\"\"\"\"\"
 	
 	var player = get_tree().get_first_node_in_group(\"plane\")
-	$VBoxContainer/Life.text = \"Life: \" + str(player.lives)
+	$VBoxContainer/Life.text = \"Life: \" + str(GameData.lives)
 	$VBoxContainer/Kmh.text = \"KM/H: \" + str(round(player.kmh_speed))
 	$VBoxContainer/Level.text = \"Level: \" + str(GameData.get_successful_landings())
 	player.connect(\"lives_updated\", _on_player_lives_updated)

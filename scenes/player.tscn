@@ -17,6 +17,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00262451, -0.923297, -0.356
 shape = SubResource("BoxShape3D_07e76")
 
 [node name="CharacterModel" type="Node3D" parent="."]
+unique_name_in_owner = true
 
 [node name="barrel_plane" parent="CharacterModel" instance=ExtResource("2_44qof")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
@@ -25,4 +26,5 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 
 script = ExtResource("2_53jvj")
 
 [node name="Camera3D" type="Camera3D" parent="pivot"]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 0.989611, 0.143769, 0, -0.143769, 0.989611, 0.0353695, 1.62393, 3.43998)

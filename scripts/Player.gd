@@ -1,7 +1,8 @@
 extends CharacterBody3D
 
+var explosion_scene = preload("res://arts/vfx/vfx_Explosion.tscn")
 @onready var barrel_plane: Node3D = $CharacterModel/barrel_plane
-
+@onready var camera = %Camera3D
 # Base configuration 
 var base_speed = 50
 var speed = base_speed
@@ -31,7 +32,9 @@ var normal_speed = 2.0
 var boosted_speed = 100 # Adjust as needed for the desired boost effect
 var speed_boost_duration = 2.0 # Duration of the speed boost in seconds
 var speed_boost_timer = 0.0 # Timer to track the speed boost duration
-@export var lives = 2
+var target_fov = 75.0
+var fov_speed = 5.0
+
 
 signal plane_position_updated(new_position)
 signal lives_updated(new_lives_count)
@@ -41,6 +44,7 @@ func _ready() -> void:
 	""""""
 	
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	camera.fov = target_fov
 
 func _input(event):
 	""""""
@@ -55,15 +59,35 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _hit_by_projectile():
-	lives -= 1
-	emit_signal("lives_updated", lives)
+	GameData.lives -= 1
+	emit_signal("lives_updated", GameData.lives)
 	
-	if lives == 1:
+	if GameData.lives == 1:
+		
+		
+		
 		var flames = barrel_plane.get_tree().get_nodes_in_group("flame")
+		var flashs = barrel_plane.get_tree().get_nodes_in_group("hit")
+		
+		for flash in flashs:
+			flash.emitting = true
+		
 		for flame in flames:
 			flame.emitting = true
 		
-	if lives <= 0:
+	if GameData.lives <= 0:
+		
+		var explosion = explosion_scene.instantiate()
+		var player = $CharacterModel
+		player.add_child(explosion)
+		for i in range(explosion.get_children().size()):
+			var effect = explosion.get_child(i)
+			effect.emitting = true
+		
+		var timer = get_tree().create_timer(.5)
+		print(timer)
+		await timer.timeout
+		
 		get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 
 ### UTILS FUNCTIONS ###
@@ -144,6 +168,13 @@ func calculate_speed(delta: float) -> void:
 	
 	current_speed = velocity.length()
 	kmh_speed = units_per_second_to_kmh(current_speed)
+	
+	if kmh_speed > 125:
+		target_fov = 90.0
+	else:
+		target_fov = 75.0
+	
+	camera.fov = lerp(camera.fov, target_fov, delta * fov_speed)
 	emit_signal("kmh_updated", kmh_speed)
 	
 func simulate_lift_and_drag(delta: float) -> void:

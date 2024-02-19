@@ -6,7 +6,7 @@ var landing_zone_scene = preload("res://scenes/landing_zone.tscn")
 var continue_menu_scene  = preload("res://scenes/progression_menu.tscn")
 var user_interface_scene  = preload("res://scenes/user_interface.tscn")
 var clouds_scene  = preload("res://arts/vfx/vfx_Clouds01.tscn")
-
+var explosion_scene = preload("res://arts/vfx/vfx_Explosion.tscn")
 var cube_size = 400
 var box_center = Vector3.ZERO
 var box_extents = Vector3(cube_size, cube_size, cube_size)
@@ -40,9 +40,22 @@ func _physics_process(delta: float) -> void:
 
 	var player = get_tree().get_first_node_in_group("plane")
 	if player and is_object_out_of_bounds(player.global_transform.origin):
-		show_continue_menu()
+		
+		var explosion = explosion_scene.instantiate()
+		player.add_child(explosion)
+		for i in range(explosion.get_children().size()):
+			var effect = explosion.get_child(i)
+			effect.emitting = true
+			
+		
+		var timer = get_tree().create_timer(1.0)
+		await timer.timeout
+		
+		get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 		
 ### UTILS FUNCTIONS ###
+	
+
 func world_to_grid(position):
 	""""""
 	
