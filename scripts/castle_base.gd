@@ -53,7 +53,7 @@ func aim_player(speed):
 	if distance > aim_limit:
 		return
 	var player_velocity = player_body.velocity
-	var target_pos = get_future_player_position(player_body.global_transform.origin, player_velocity, 50)
+	var target_pos = get_future_player_position(player_body.global_transform.origin, player_velocity, 75.0)
 	
 	aim_start.look_at(target_pos, Vector3.FORWARD)
 	pivot_weapon.global_rotation_degrees.x = aim_start.global_rotation_degrees.x *-1

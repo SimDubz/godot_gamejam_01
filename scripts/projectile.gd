@@ -1,7 +1,7 @@
 extends Area3D
 @onready var anchor: Node3D = $Anchor
 @onready var collision_shape_3d: CollisionShape3D = $CollisionShape3D
-@export var speed = 50.0
+@export var speed = 75.0
 var projectil_canon_scene = preload("res://assets/Projectile_Cannonball.tscn")
 var projectil_arrow_scene = preload("res://assets/Projectile_Arrow.tscn")
 var direction = Vector3.FORWARD
