@@ -34,6 +34,7 @@ var speed_boost_duration = 2.0 # Duration of the speed boost in seconds
 var speed_boost_timer = 0.0 # Timer to track the speed boost duration
 var target_fov = 75.0
 var fov_speed = 5.0
+var lives = 2
 
 
 signal plane_position_updated(new_position)
@@ -59,10 +60,10 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _hit_by_projectile():
-	GameData.lives -= 1
-	emit_signal("lives_updated", GameData.lives)
+	lives -= 1
+	emit_signal("lives_updated", lives)
 	
-	if GameData.lives == 1:
+	if lives == 1:
 		
 		
 		
@@ -75,7 +76,7 @@ func _hit_by_projectile():
 		for flame in flames:
 			flame.emitting = true
 		
-	if GameData.lives <= 0:
+	if lives <= 0:
 		
 		var explosion = explosion_scene.instantiate()
 		var player = $CharacterModel
