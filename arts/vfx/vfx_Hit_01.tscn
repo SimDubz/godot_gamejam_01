@@ -105,7 +105,6 @@ explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_re2we")
 draw_pass_1 = SubResource("QuadMesh_yb6ol")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." groups=["hit_audio"]]
 stream = ExtResource("3_covof")
 volume_db = -15.0
-autoplay = true

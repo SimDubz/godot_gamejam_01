@@ -69,6 +69,10 @@ func _hit_by_projectile():
 		
 		var flames = barrel_plane.get_tree().get_nodes_in_group("flame")
 		var flashs = barrel_plane.get_tree().get_nodes_in_group("hit")
+		var flash_audio = barrel_plane.get_tree().get_nodes_in_group("hit_audio")
+		
+		for audio in flash_audio:
+			audio.playing = true
 		
 		for flash in flashs:
 			flash.emitting = true
