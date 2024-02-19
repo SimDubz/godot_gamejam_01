@@ -5,7 +5,7 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_us3r7"]
 radius = 2.57324
-height = 38.5273
+height = 47.6788
 
 [node name="flame_projectile" type="Area3D"]
 script = ExtResource("1_f6pti")
